@@ -1,0 +1,22 @@
+/* pages/myFeedBack/myFeedBack.wxss */
+.table {
+    display: flex;
+    width: 90%;
+    /* height: 100%; */
+    background: white;
+    /* background: rgba(245, 245, 245, 0.842);  */
+    /* 水平居中 */
+    margin: auto;
+    /* 布局方向为竖直方向 */
+    flex-direction: column;
+    /* 边框圆角 */
+    border-radius: 20rpx;
+    border-style: double;
+    border-color: #15c6f2;
+    margin-top: 50%;
+
+}
+
+.item{
+  text-align: center;
+}

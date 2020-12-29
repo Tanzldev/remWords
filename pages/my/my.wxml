@@ -1,0 +1,71 @@
+<!--pages/my/my.wxml-->
+
+<view class="body">
+
+  <!-- 用户信息 -->
+  <view class="userInfo">
+    <view class="comUserInfo">
+    
+      <block wx:if="{{hasUserInfo}}">
+        <image class="userHeadImage" src="{{ userInfo.avatarUrl}}"></image>
+        <text class="userName">用户名：{{userInfo.nickName}}</text>       
+      </block>
+
+      <block wx:else>
+        <image  class="userHeadImage" src="{{headImage}}"></image>
+        <text class="userName">用户名：{{userName}}</text>
+      </block>
+
+      <button style="width:25vw" class="register" size="default"            open-type="getUserInfo" bindgetuserinfo="getUserInfo">{{register}}</button>
+      
+    </view> 
+  </view>
+
+  <!-- 功能区 -->
+  <view class="table">
+      <view class="item">
+        <image class="tipLeftImg"></image>
+        <text class="tipText">我的课本</text>
+        <image class="rightTipImage" src="../source/image/rightImage.jpg"></image>
+      
+        
+      </view>
+
+      <view class="line"></view>
+
+      <view class="item">
+        <image class="tipLeftImg"></image>
+        <text class="tipText">我的信息</text>
+        <image class="rightTipImage" src="../source/image/rightImage.jpg"></image>
+        
+      </view>
+
+      <view class="line"></view>
+
+      <view class="item" bindtap="toMyFeedBack">
+        <image class="tipLeftImg"></image>
+        <text class="tipText">我要反馈</text>
+        <image class="rightTipImage" src="../source/image/rightImage.jpg"></image>
+        
+      </view>
+
+      <view class="line"></view>
+
+      <view class="item" bindtap="toSet">
+        <image class="tipLeftImg"></image>
+        <text class="tipText">设置</text>
+        <image class="rightTipImage" src="../source/image/rightImage.jpg"></image>
+
+      </view>
+
+      <view class="line"></view>
+
+      <view class="item">
+        <text class="tipText">当前版本</text>
+        <text style="margin-left:300rpx">{{versionNum}}</text>
+
+      </view>
+      
+  
+  </view>
+</view>

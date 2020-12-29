@@ -1,0 +1,116 @@
+/* pages/my/my.wxss */
+
+.userInfo {
+
+  display: flex;
+  width: 90%;
+  height: 160rpx;
+  background: rgba(245, 245, 245, 0.842); 
+  /* 水平居中 */
+  margin: auto;
+  /* 阴影 */
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0,0,0,0.2);
+  /* 边框圆角 */
+  border-radius: 20rpx;
+
+}
+
+.comUserInfo {
+  display: flex;
+  align-items: center;
+
+}
+
+
+.userHeadImage {
+
+  display: block;
+  width: 100rpx;
+  height: 100rpx;
+  /* margin-top: 15rpx; */
+  margin-left: 20rpx;
+  border-radius: 50rpx;
+
+}
+/* 问候语 */
+.register {
+ 
+  font-size: 40rpx;
+  color: #e4afaf; 
+  background: rgba(245, 245, 245, 0.842); 
+  padding-left: 0rpx;
+  margin-bottom: 50rpx;
+  
+}
+
+.userName {
+  position: absolute;
+  left: 170rpx;
+  top: 90rpx;
+  color: #444141;
+}
+
+
+.table {
+    display: flex;
+    width: 90%;
+    /* height: 100%; */
+    background: white;
+    /* background: rgba(245, 245, 245, 0.842);  */
+    /* 水平居中 */
+    margin: auto;
+    /* 布局方向为竖直方向 */
+    flex-direction: column;
+    /* 边框圆角 */
+    border-radius: 20rpx;
+    box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0,0,0,0.2);
+    margin-top: 40rpx;
+
+}
+
+.item {
+
+  
+  display: flex;
+  height: 130rpx;
+  /* 垂直居中 */
+  align-items: center;
+
+}
+
+
+.tipLeftImg {
+  margin-left: 20rpx;
+  width: 80rpx;
+  height: 80rpx;
+  background: navy;
+
+}
+
+
+.rightTipImage {
+  width: 35rpx;
+  height: 50rpx;
+  /* background: red; */
+  margin-left: 300rpx;
+  
+}
+
+.tipText {
+
+  margin-left: 20rpx;
+  width: 200rpx;
+  font-size: 30rpx;
+  font-weight: lighter;
+
+}
+
+.line {
+  display: flex;
+  margin: auto;
+  width: 95%;
+  height: 1rpx;
+  /* border-style:dotted; */
+  background: #d1cfce;
+ 
+}

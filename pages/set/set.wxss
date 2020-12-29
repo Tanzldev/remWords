@@ -1,0 +1,12 @@
+/* pages/set/set.wxss */
+.body{
+  margin-top: 40rpx;
+}
+.out{
+  cursor: pointer;
+  background: #15c6f2;
+  width: 50rpx; 
+  border-radius: 40rpx;
+  /* 将按钮字体设置为正常规格 */
+  font-weight:normal; 
+}

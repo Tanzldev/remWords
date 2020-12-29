@@ -1,0 +1,6 @@
+<!--pages/set/set.wxml-->
+<view class="body">
+    <button style="width:80vw" class="out" bindtap="clear">清除缓存</button>
+    <button style="width:80vw;margin-top:20rpx"  class="out" bindtap="outLogin">退出登录 </button>
+    <button style="width:80vw;margin-top:20rpx" class="out" bindtap="register">点击登录</button>
+</view>

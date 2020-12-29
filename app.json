@@ -1,0 +1,44 @@
+{
+  "pages": [
+    "pages/my/my",
+    "pages/index/index",
+    "pages/complete/complete",
+    "pages/myFeedBack/myFeedBack",
+    "pages/set/set"
+  ],
+  "window": {
+    "backgroundTextStyle": "dark",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "不如记单词",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#b5b1b0",
+    "selectedColor": "#15c6f2",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "pages/source/image/remenber.jpg",
+        "selectedIconPath": "pages/source/image/selectedRemenber.jpg"
+      },
+      {
+        "pagePath": "pages/complete/complete",
+        "text": "成就",
+        "iconPath": "pages/source/image/complete.jpg",
+        "selectedIconPath": "pages/source/image/selectedComplete.jpg"
+      },
+      {
+        "pagePath": "pages/my/my",
+        "text": "我的",
+        "iconPath": "pages/source/image/my.jpg",
+        "selectedIconPath": "pages/source/image/selectedMy.jpg"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}
