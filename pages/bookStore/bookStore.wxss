@@ -1,0 +1,46 @@
+/* pages/complete/complete.wxss */
+
+.booksType{
+  display: flex;
+  position: -webkit-sticky;
+  position: sticky;
+}
+
+.booksTypeBody{
+  display: flex;
+  margin:auto;            /*水平居中显示*/
+  align-items: center;    /*垂直居中显示*/
+}
+
+.booksTypeImg{
+  
+  width: 15rpx;
+  height: 15rpx;
+  padding-left: 10rpx;    /*左边距*/
+}
+
+.line{
+  width: 100%;
+  height: 2rpx;
+  margin-top: 10rpx;
+  background: #000000;
+}
+
+.scrollviewBody{
+  display: block; /*block块状显示,无论占不占满一行，都换行显示*/
+  margin-top: 50px;
+}
+.scroll-view{
+  /* height:min-content; 不写rpx绝对高度没用*/
+  height: 1000rpx;
+}
+.scrollviewItems{
+  height: 100px;
+  width: 100%;
+  border: #000000;          /*边框颜色*/
+  /* border-left-style:none;
+  border-top-style:none;
+  border-right-style:none; */
+  border-bottom-style:solid;   /*只显示边框的底边，solid为实体边框*/
+  border-width: 2rpx;
+}

@@ -7,16 +7,16 @@
     <view class="comUserInfo">
     
       <block wx:if="{{hasUserInfo}}">
-        <image class="userHeadImage" src="{{ userInfo.avatarUrl}}"></image>
-        <text class="userName">用户名：{{userInfo.nickName}}</text>       
+        <image class="userHeadImage" src="{{userInfo.avatarUrl}}"></image>
+        <text class="userName" >用户名：{{userInfo.nickName}}</text>       
       </block>
 
       <block wx:else>
-        <image  class="userHeadImage" src="{{headImage}}"></image>
+        <image  class="userHeadImage" src="../source/image/my.jpg"></image>
         <text class="userName">用户名：{{userName}}</text>
       </block>
 
-      <button style="width:25vw" class="register" size="default"            open-type="getUserInfo" bindgetuserinfo="getUserInfo">{{register}}</button>
+      <button style="width:20vw" class="login" size="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo">{{login}}</button>
       
     </view> 
   </view>
@@ -24,18 +24,16 @@
   <!-- 功能区 -->
   <view class="table">
       <view class="item">
-        <image class="tipLeftImg"></image>
-        <text class="tipText">我的课本</text>
-        <image class="rightTipImage" src="../source/image/rightImage.jpg"></image>
-      
-        
+        <image class="tipLeftImg" src="../source/image/mySelectBook.jpg"></image>
+        <text class="tipText">已选课本</text>
+        <image class="rightTipImage" src="../source/image/rightImage.jpg"></image>  
       </view>
 
       <view class="line"></view>
 
       <view class="item">
-        <image class="tipLeftImg"></image>
-        <text class="tipText">我的信息</text>
+        <image class="tipLeftImg" src="../source/image/newWord.jpg"></image>
+        <text class="tipText">生词本</text>
         <image class="rightTipImage" src="../source/image/rightImage.jpg"></image>
         
       </view>
@@ -43,8 +41,8 @@
       <view class="line"></view>
 
       <view class="item" bindtap="toMyFeedBack">
-        <image class="tipLeftImg"></image>
-        <text class="tipText">我要反馈</text>
+        <image class="tipLeftImg" src="../source/image/feedback.jpg"></image>
+        <text class="tipText">反馈</text>
         <image class="rightTipImage" src="../source/image/rightImage.jpg"></image>
         
       </view>
@@ -52,7 +50,7 @@
       <view class="line"></view>
 
       <view class="item" bindtap="toSet">
-        <image class="tipLeftImg"></image>
+        <image class="tipLeftImg" src="../source/image/set.jpg"></image>
         <text class="tipText">设置</text>
         <image class="rightTipImage" src="../source/image/rightImage.jpg"></image>
 

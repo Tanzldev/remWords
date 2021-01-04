@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/bookStore/bookStore",
     "pages/my/my",
     "pages/index/index",
-    "pages/complete/complete",
     "pages/myFeedBack/myFeedBack",
     "pages/set/set"
   ],
@@ -21,15 +21,15 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
+        "text": "记词",
         "iconPath": "pages/source/image/remenber.jpg",
         "selectedIconPath": "pages/source/image/selectedRemenber.jpg"
       },
       {
-        "pagePath": "pages/complete/complete",
-        "text": "成就",
-        "iconPath": "pages/source/image/complete.jpg",
-        "selectedIconPath": "pages/source/image/selectedComplete.jpg"
+        "pagePath": "pages/bookStore/bookStore",
+        "text": "课本",
+        "iconPath": "pages/source/image/bookStore.jpg",
+        "selectedIconPath": "pages/source/image/selectedBookStore.jpg"
       },
       {
         "pagePath": "pages/my/my",

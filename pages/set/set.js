@@ -1,4 +1,5 @@
 // pages/set/set.js
+const app = getApp();
 Page({
 
   /**
@@ -40,14 +41,15 @@ Page({
           success(res) {
             //用户点击了确定
             if (res.confirm) {
+              prevPage.setData({
+                login: "登录",
+                hasUserInfo: false,   //将hasUserInfo否定
+              }),
               wx.navigateBack({
                 url: "../my/my"
-              }),
+              })
                 //关闭当前页面，返回上一页面或多级页面。可通过 getCurrentPages 获取当前的页面栈，决定需要返回几层
-                prevPage.setData({
-                  register:"登录",
-                  hasUserInfo: false    //将hasUserInfo否定
-                })
+                
             }
           }
 
@@ -63,12 +65,12 @@ Page({
       /*  
       url路径，就是你的PHP文件在那里，这里也用的是绝对路径
       */
-      url: 'http://localhost/php/member/checkLogin.php',      //
+      url: app.globalData.netUrl+'checkLogin.php',      //
 
       //向服务器存放数据的地方
       data:{
-        tel:'13876762323',      //测试的用户名，请与服务端PHP中的名称一致
-        password:'651',
+        tel:'123456',      //测试的用户名，请与服务端PHP中的名称一致
+        password:'123456',
       },
       method:'GET',   //这里好像不支持POST请求，POST请求会失败，原因还不明白
       header:{

@@ -17,14 +17,13 @@
 
 .comUserInfo {
   display: flex;
-  align-items: center;
+  align-items: center;    /*垂直居中显示*/
 
 }
 
-
 .userHeadImage {
 
-  display: block;
+  display: block; /*块状显示*/
   width: 100rpx;
   height: 100rpx;
   /* margin-top: 15rpx; */
@@ -33,12 +32,12 @@
 
 }
 /* 问候语 */
-.register {
+.login {
  
   font-size: 40rpx;
   color: #e4afaf; 
   background: rgba(245, 245, 245, 0.842); 
-  padding-left: 0rpx;
+  padding-left: 10rpx;
   margin-bottom: 50rpx;
   
 }
@@ -69,8 +68,6 @@
 }
 
 .item {
-
-  
   display: flex;
   height: 130rpx;
   /* 垂直居中 */
@@ -81,9 +78,9 @@
 
 .tipLeftImg {
   margin-left: 20rpx;
-  width: 80rpx;
-  height: 80rpx;
-  background: navy;
+  width: 50rpx;
+  height: 50rpx;
+  /* background: navy; */
 
 }
 
@@ -97,10 +94,9 @@
 }
 
 .tipText {
-
-  margin-left: 20rpx;
+  margin-left: 25rpx;
   width: 200rpx;
-  font-size: 30rpx;
+  font-size: 35rpx;
   font-weight: lighter;
 
 }
