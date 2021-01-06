@@ -28,7 +28,7 @@
   height: 100rpx;
   /* margin-top: 15rpx; */
   margin-left: 20rpx;
-  border-radius: 50rpx;
+  border-radius: 50rpx;     /*边框圆角处理*/
 
 }
 /* 问候语 */

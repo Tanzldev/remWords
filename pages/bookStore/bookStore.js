@@ -5,9 +5,10 @@ Page({
    * 页面的初始数据
    */
   data: {
-   bookItem:"大学",
+   bookItem:"初中",
    booksTypeImgSrc:"../source/image/tipBookTypeDown.jpg",
    array: ['初中', '高中', '大学', '考研'],               //普通选择器的选择数组
+   scrollHeight:0,
    //滑动选择器的结果数组
    scrollviewArray: [{
     message: '1',
@@ -57,7 +58,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+    
   },
 
   /**
