@@ -44,6 +44,12 @@ Page({
     }
 
   },
+
+  toFondBooks:function(){
+    wx.navigateTo({
+      url: '../fondBooks/fondBooks',
+    })
+  },
  
   //跳转到我要反馈界面
   toMyFeedBack:function(){

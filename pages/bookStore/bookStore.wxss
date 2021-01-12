@@ -57,7 +57,7 @@ page {
   width: 140rpx;
   height: 180rpx;
   margin-left: 5%;
-  background: aquamarine;
+  /* background: aquamarine; */
 }
 
 .bookIntroBody{
@@ -88,7 +88,7 @@ page {
 }
 
 .bookLabel{
-  background: rgb(255, 229, 82);
+  background: #c3c5c5ee;
   width: fit-content;         /*根据内容填充，设置宽度*/
   border-radius: 6rpx;        /*边框圆角处理*/
   margin-top: 20rpx;
@@ -96,7 +96,6 @@ page {
   letter-spacing: 10rpx;
   color: rgb(0, 0, 0);
 }
-
 
 /* 词书右侧操作整体修饰 */
 .rightOperate{
@@ -106,40 +105,55 @@ page {
   align-items: center;
   height: 180rpx;
   width: 180rpx;
-  /* border: 3rpx solid red; */
-
+  
 }
 
-
-.imgBody{
-  margin-top: 10%;
+.dedailBody{
   display: flex;
   flex-direction: row;
+  align-items: center;
+  height: 50rpx;
+  width: 140rpx;
+  
 }
-.fondImg{
-  width: 60rpx;
-  height: 60rpx;
-  background: red;
+
+.detailImg{
+  width: 30rpx;
+  height: 30rpx;
 }
 .bookDetail{
-  margin-left: 15%;
-  width: 60rpx;
-  height: 60rpx;
-  background: red;
+  width: 100rpx;
+  height: 30rpx;
+  margin-left: 10%;
+  font-size: 20rpx;
+  text-align: center;
+  border-radius: 10rpx;
+  border: #b5b1b0 solid 2rpx;
 }
-.selectBook{
+
+.selectBody{
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  flex-direction: row;
+  align-items: center;
   margin-top: 10%;
   height: 50rpx;
   width: 140rpx;
-  background: #15c6f2;
-  border-radius: 30rpx;
 
+} 
+.fondImg{
+  width: 30rpx;
+  height: 30rpx;
+ 
 }
-.selectBookText{
-  font-size: 25rpx;
+
+.selectBook{
+  width: 100rpx;
+  height: 30rpx;
+  margin-left: 10%;
+  font-size: 22rpx;
   text-align: center;
+  border-radius: 10rpx;
+  border: #eb6877 solid 2rpx;
 }
+ 
 

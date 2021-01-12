@@ -1,0 +1,25 @@
+<!--pages/fondBooks/fondBooks.wxml-->
+<view class="body">
+  <!-- 选择更多词书body -->
+  <view class="tipBody" bindtap="toBookStore">
+    <image class="tipImg" src="../source/image/tipMore.jpg"></image>
+    <view>
+      <text class="tipText">更多词书</text>
+    </view>
+  </view>
+  
+  <!-- 已选图书列表,需要根据结果数组循环渲染该列表 -->
+  <view class="booksBody" wx:for="{{fondBooksArray}}">      
+      
+     <image class="bookImg" src="{{item.bookImg}}"></image>
+     
+     <view class="bookIntroText">
+      <text class="bookName">{{item.name}}</text>
+      <text class="publisher">@{{item.publisher}}</text>
+      <text class="wordsCount">共{{item.wordsCount}}词</text>
+     </view>
+     
+     <!-- 删除词书 -->
+     <image class="deleteBook" src="../source/image/deleteBook.jpg" bindtap="deleteBookBtn"></image>
+  </view>
+</view>

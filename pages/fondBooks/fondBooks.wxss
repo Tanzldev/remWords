@@ -1,0 +1,97 @@
+/* pages/fondBooks/fondBooks.wxss */
+page {
+  height: 100%;           /*全为scrollview自适应手机高度*/
+}
+.body{
+  display: flex;
+  flex-direction: column;   /*竖直布局*/
+  align-items: center;
+  height: 100%;
+  background:#f3f6ff;
+}
+
+.tipBody{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5%;
+  width: 90%;
+  height: 100rpx;
+  border-radius: 50rpx;
+  /* 阴影 */
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0,0,0,0.2);
+  background: #ffffff;
+}
+
+.tipImg{
+  width: 60rpx;
+  height: 60rpx;
+  margin-right: 3%;
+  
+}
+
+.tipText{
+  width: fit-content;
+  height: 80rpx;
+  color: #458bff;
+  font-size: 35rpx;
+  letter-spacing: 2rpx;
+  font-style: normal;
+}
+
+/* 滑块选择器部分修饰 */
+.booksBody{
+  display: flex;
+  flex-direction: row;       /*子元素对齐方向为竖直方向*/
+  align-items: center;
+  width: 90%;
+  height: 250rpx;
+  margin-top: 5%;
+  background: #ffffff;
+  border-radius: 25rpx;     
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0,0,0,0.2);  
+ 
+}
+
+.bookImg{
+  width: 140rpx;
+  height: 180rpx;
+  margin-left: 5%;
+  
+}
+
+.bookIntroText{
+  display: flex;
+  flex-direction: column;
+  width: 300rpx;
+  height: 180rpx;
+  margin-left: 5%;
+  /* border: cornflowerblue solid 3rpx; */
+}
+.bookName{
+  color:#000000;
+  font-weight: bold;
+  letter-spacing: 3rpx;
+  font-size: 35rpx;
+}
+.publisher{
+  color: #b5b1b0;
+  margin-top: 20rpx;
+  letter-spacing: 3rpx;
+  font-size:25rpx;
+}
+.wordsCount{
+  color: #b5b1b0;
+  margin-top: 20rpx;
+  letter-spacing: 3rpx;
+  font-size:25rpx;
+ }
+
+ .deleteBook{
+   width: 80rpx;
+   height: 80rpx;
+   margin-left: 5%;
+   
+ }
+ 

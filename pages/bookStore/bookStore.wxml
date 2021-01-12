@@ -16,12 +16,13 @@
   <view class="scrollviewBody">
   <scroll-view class="scroll-view"  scroll-y="true" >
 
-    <view class="scrollviewItems" wx:for="{{scrollviewArray}}">
+    <view class="scrollviewItems" wx:for="{{scrollviewArray}}" >
       <!-- index为数组元素下标，item为数组元素中的子成员变量 -->
       <!-- {{index}}: {{item.message}} -->
-      <image class="bookImg"></image>        
-
-      <!-- 词书右侧说明 -->
+      <image class="bookImg" src="../source/image/booksImg/lianci.jpg">
+      </image>        
+        
+      <!-- 词书中间说明 -->
       <view class="bookIntroBody">
         <view class="bookIntroText">
           <text class="bookName">高中写作必备词汇</text>
@@ -32,12 +33,14 @@
 
       <!-- 词书右侧操作 -->
       <view class="rightOperate">
-        <view class="imgBody">
-          <image class="fondImg"></image>
-          <image class="bookDetail"></image>
+        <view class="dedailBody" bindtap='bookDetail' data-index="{{index}}">
+          <image class="detailImg" src="../source/image/bookDetail.jpg"></image>
+          <text class="bookDetail">词书详情</text>
         </view>
-        <view class="selectBook">
-          <text class="selectBookText">选择词书</text>
+        
+        <view class="selectBody" bindtap='fondBook' data-index="{{index}}">
+          <image class="fondImg" src="{{item.fondImgSrc}}" ></image>
+          <text class="selectBook" style="background:{{item.bgd}}">{{item.tipSelect}}</text>
         </view>
         
       </view>

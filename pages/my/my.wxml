@@ -23,9 +23,9 @@
 
   <!-- 功能区 -->
   <view class="table">
-      <view class="item">
+      <view class="item" bindtap="toFondBooks">
         <image class="tipLeftImg" src="../source/image/mySelectBook.jpg"></image>
-        <text class="tipText">已选课本</text>
+        <text class="tipText">已选词书</text>
         <image class="rightTipImage" src="../source/image/rightImage.jpg"></image>  
       </view>
 

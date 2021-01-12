@@ -1,15 +1,18 @@
 {
   "pages": [
-    "pages/bookStore/bookStore",
+    
     "pages/my/my",
+    "pages/bookStore/bookStore",
     "pages/index/index",
     "pages/myFeedBack/myFeedBack",
-    "pages/set/set"
+    "pages/set/set",
+    "pages/fondBooks/fondBooks"
+    
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "不如记单词",
+    "navigationBarTitleText": "亦思记单词",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },
@@ -27,7 +30,7 @@
       },
       {
         "pagePath": "pages/bookStore/bookStore",
-        "text": "课本",
+        "text": "词书",
         "iconPath": "pages/source/image/bookStore.jpg",
         "selectedIconPath": "pages/source/image/selectedBookStore.jpg"
       },
