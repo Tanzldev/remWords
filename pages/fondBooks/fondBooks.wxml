@@ -12,7 +12,7 @@
   <view class="booksBody" wx:for="{{fondBooksArray}}">      
       
      <image class="bookImg" src="{{item.bookImg}}"></image>
-     
+
      <view class="bookIntroText">
       <text class="bookName">{{item.name}}</text>
       <text class="publisher">@{{item.publisher}}</text>
@@ -20,6 +20,6 @@
      </view>
      
      <!-- 删除词书 -->
-     <image class="deleteBook" src="../source/image/deleteBook.jpg" bindtap="deleteBookBtn"></image>
+     <image class="deleteBook" src="../source/image/deleteBook.jpg" bindtap="deleteBookBtn" data-index="{{index}}"></image>
   </view>
 </view>

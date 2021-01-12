@@ -30,9 +30,11 @@ Page({
     })
   },
 
-  deleteBookBtn:function(){
+  deleteBookBtn:function(e){
+    var that = this;
+    var index = e.currentTarget.dataset.index;        //得到此时点击的图书索引
     wx.showToast({
-      title: '你点击了删除图书按钮',
+      title: '你点击了'+index+'删除图书按钮',
       icon:'none'
     })
   },
