@@ -50,6 +50,12 @@ Page({
       url: '../fondBooks/fondBooks',
     })
   },
+
+  toNewWords:function(){
+    wx.navigateTo({
+      url: '../newWords/newWords',
+    })
+  },
  
   //跳转到我要反馈界面
   toMyFeedBack:function(){

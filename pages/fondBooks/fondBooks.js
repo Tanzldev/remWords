@@ -24,12 +24,14 @@ Page({
   ]
   },
   
+  //跳转至tabBar界面，添加更多图书
   toBookStore:function(){
     wx.switchTab({
       url: '../bookStore/bookStore',
     })
   },
 
+  //删除词书
   deleteBookBtn:function(e){
     var that = this;
     var index = e.currentTarget.dataset.index;        //得到此时点击的图书索引

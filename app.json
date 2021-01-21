@@ -1,18 +1,17 @@
 {
   "pages": [
-    
     "pages/my/my",
     "pages/bookStore/bookStore",
     "pages/index/index",
     "pages/myFeedBack/myFeedBack",
     "pages/set/set",
-    "pages/fondBooks/fondBooks"
-    
+    "pages/fondBooks/fondBooks",
+    "pages/newWords/newWords"
   ],
   "window": {
     "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "亦思记单词",
+    "navigationBarTitleText": "不如记单词",
     "navigationBarTextStyle": "black",
     "enablePullDownRefresh": true
   },

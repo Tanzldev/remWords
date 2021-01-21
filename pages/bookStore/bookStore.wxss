@@ -9,7 +9,7 @@ page {
 }
 
 .booksType{
-  display: flex;
+  display: flex;      /*启用盒子布局，未指明子元素布局方向*/
 }
 
 .booksTypeBody{
@@ -37,6 +37,7 @@ page {
   overflow: scroll; 
   
 }
+
 .scroll-view{
   height: 100%;
 }

@@ -1,0 +1,25 @@
+<!--pages/newWords/newWords.wxml-->
+
+<view class="body">
+
+  <!-- 头部内容 -->
+  <view class="tipBody">
+    <image class="newWordsImg" src="../source/image/newWordsImg.jpg"></image>
+    <text class="tipText">生词列表</text>
+    <image class="showMeanImg"></image>
+    <text class="showMean" bindtap="showMean">{{showMeanTip}}</text>  
+  </view>
+
+  <!-- 滑块内容scrollView -->
+
+  <view class="scrollviewBody">
+
+    <scroll-view class="scroll-view"  scroll-y="true">
+      <view class="scrollviewItems" wx:for="{{scrollviewArray}}">
+        {{index}}: {{item.message}}
+      </view>
+    </scroll-view>
+
+  </view>
+
+</view>

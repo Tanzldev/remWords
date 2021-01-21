@@ -3,7 +3,7 @@
 
   <view class="booksType">
     <view class="booksTypeBody">
-      <!-- value为Picker选择后携带的返回值，range为选择的自定义范围-->
+      <!-- value为Picker选择后携带的返回值，range为选择的自定义范围，这里的选择器数组名好像不能更改，必须为array-->
       <picker bindchange="bindPickerChange" bindcancel="bindPickerCancel" value="{{index}}" range="{{array}}" bindtap="booksTypeBtn">{{bookItem}}</picker>
       <image class="booksTypeImg" src="{{booksTypeImgSrc}}"></image>
     </view>
@@ -19,6 +19,7 @@
     <view class="scrollviewItems" wx:for="{{scrollviewArray}}" >
       <!-- index为数组元素下标，item为数组元素中的子成员变量 -->
       <!-- {{index}}: {{item.message}} -->
+      
       <image class="bookImg" src="../source/image/booksImg/lianci.jpg">
       </image>        
         

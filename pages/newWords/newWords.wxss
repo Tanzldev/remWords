@@ -1,0 +1,73 @@
+/* pages/newWords/newWords.wxss */
+
+page {                         /*这里的page是手机页面的高度，为适应scrollview自适应手机高度*/
+  height: 100%;
+}
+
+.body{
+  height: 100%;
+  display: flex;
+  flex-direction: column;       /*子元素对齐方向为竖直方向*/
+  
+}
+
+.tipBody{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 70rpx;
+  width: 100%;
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0,0,0,0.2);
+}
+
+.newWordsImg{
+  height: 50rpx;
+  width: 50rpx;
+  margin-left: 5%;
+  /* background: chartreuse; */
+}
+
+.tipText{
+  color: #000000;
+  font-size: 40rpx;
+  letter-spacing: 3rpx;
+  /* font-weight: bold; */
+  margin-left: 2%;
+}
+.showMeanImg{
+  height: 10rpx;
+  width: 10rpx;
+  margin-left:40%;
+  border-radius: 5rpx;
+  background:#b5b1b0;
+}
+.showMean{
+  color: #b5b1b0;
+  font-size: 30rpx;
+  margin-left: 2%;
+
+}
+
+
+
+.scrollviewBody{
+  flex: 1;                    /*全为scrollview自适应手机高度*/
+  overflow: scroll;  
+}
+
+.scroll-view{
+  text-align: center;
+  height: 100%;
+}
+
+.scrollviewItems{
+  display: flex;              /*启用flex布局*/
+  flex-direction: row;        /*盒子元素排列方式为row水平方式，主轴方向为水平方向*/
+  /* justify-content: center; */  /*元素在主轴方向上的对齐方式*/
+  align-items: center;        /*元素在垂直主轴上的对齐方式*/
+  height: 180rpx;
+  width: 100%;
+  border: #b5b1b0;         
+  border-bottom-style:solid;   /*只显示边框的底边，solid为实体边框*/
+  border-width: 2rpx;
+}
