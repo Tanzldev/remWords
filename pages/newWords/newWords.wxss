@@ -20,54 +20,89 @@ page {                         /*这里的page是手机页面的高度，为适�
   box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0,0,0,0.2);
 }
 
-.newWordsImg{
-  height: 50rpx;
-  width: 50rpx;
+.tipImg{
+  height: 38rpx;
+  width: 38rpx;
   margin-left: 5%;
+  margin-bottom: 1%;
   /* background: chartreuse; */
 }
 
 .tipText{
   color: #000000;
-  font-size: 40rpx;
+  font-size: 38rpx;
   letter-spacing: 3rpx;
   /* font-weight: bold; */
   margin-left: 2%;
+  margin-bottom: 1%;
 }
 .showMeanImg{
   height: 10rpx;
   width: 10rpx;
   margin-left:40%;
   border-radius: 5rpx;
-  background:#b5b1b0;
+  background:#15c6f2;
 }
 .showMean{
-  color: #b5b1b0;
+  color: #15c6f2;
   font-size: 30rpx;
   margin-left: 2%;
 
 }
 
-
-
-.scrollviewBody{
-  flex: 1;                    /*全为scrollview自适应手机高度*/
-  overflow: scroll;  
+.scrollviewBody{                  
+  /*全为scrollview自适应手机高度*/
+  overflow: auto;             
+  /*visible 元素将被剪接      
+  hidden  元素将被剪接，溢出内容不可见                               √             
+  scroll	内容会被修剪，但是浏览器会显示滚动条以便查看其余的内容。      √
+  auto	如果内容被修剪，则浏览器会显示滚动条以便查看其余的内容。        √
+  inherit	规定应该从父元素继承 overflow 属性的值。
+  */
 }
 
 .scroll-view{
-  text-align: center;
   height: 100%;
 }
 
 .scrollviewItems{
   display: flex;              /*启用flex布局*/
-  flex-direction: row;        /*盒子元素排列方式为row水平方式，主轴方向为水平方向*/
-  /* justify-content: center; */  /*元素在主轴方向上的对齐方式*/
-  align-items: center;        /*元素在垂直主轴上的对齐方式*/
+  flex-direction:column;        /*盒子元素排列方式为colume垂直方式，主轴方向为垂直方向*/
+  justify-content: center;
   height: 180rpx;
   width: 100%;
   border: #b5b1b0;         
   border-bottom-style:solid;   /*只显示边框的底边，solid为实体边框*/
   border-width: 2rpx;
+}
+
+.wordBox{
+  margin-left: 6%;
+}
+
+.word{
+  font-size: 44rpx;
+}
+.translationBox{
+  margin-left: 6%;
+  margin-top: 20rpx;
+  color:#969696d3;
+}
+
+/* 单词释义上的盖子 */
+.cover{
+  position: absolute;
+  height: 60rpx;
+  width: 90%;
+  margin-top: 40rpx;
+  margin-left: 5%;
+  background: #b4e8f5;
+  border-radius: 10rpx;
+  text-align: center;
+
+  z-index: 1;             /*将cover盖子显示在translattion之上，负数为底层，正数为顶层 */
+}
+.translateTip{
+  letter-spacing: 4rpx;
+  font-size: 24rpx;
 }

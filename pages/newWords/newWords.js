@@ -6,7 +6,7 @@ Page({
    */
   data: {
     showMeanTip:'显示释义',
-    hasShowMean:false ,         //开始进入生词本，不显示释义
+    translate:false ,         //开始进入生词本，不显示释义
 
     scrollviewArray:[{
       message:0
@@ -29,15 +29,15 @@ Page({
   },
 
   showMean:function(){
-    if(this.data.hasShowMean == false){
+    if(this.data.translate == false){
       this.setData({
         showMeanTip:'关闭释义',
-        hasShowMean:true
+        translate:true
       })
     }else{
       this.setData({
         showMeanTip:'显示释义',
-        hasShowMean:false
+        translate:false
       })
     }
   },

@@ -6,13 +6,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-   login:"登录",
+   login:"登录",            //界面按钮
    userName:"XXX",
    userGender:-1,
    versionNum:"v1.0.0",
    userInfo: {},
    hasUserInfo: false,
    firstLogin:1,
+   netWorkType:'4g',
    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
 
@@ -46,15 +47,31 @@ Page({
   },
 
   toFondBooks:function(){
-    wx.navigateTo({
-      url: '../fondBooks/fondBooks',
-    })
+    if(this.data.hasUserInfo == true){
+      wx.navigateTo({
+        url: '../fondBooks/fondBooks',
+      })
+    }else{
+      wx.showToast({
+        title: '未登录！',
+        icon:'none'
+      })
+    }
+   
   },
 
   toNewWords:function(){
-    wx.navigateTo({
-      url: '../newWords/newWords',
-    })
+    if(this.data.hasUserInfo == true){
+      wx.navigateTo({
+        url: '../newWords/newWords',
+      })
+    }else{
+      wx.showToast({
+        title: '未登录！',
+        icon:'none'
+      })
+    }
+    
   },
  
   //跳转到我要反馈界面
@@ -64,7 +81,7 @@ Page({
       url: '../myFeedBack/myFeedBack', //此路径为相对路径
     })
   },
-
+  
   //跳转设置界面
   toSet:function(){
     wx.navigateTo({
@@ -74,15 +91,7 @@ Page({
  
   //用户信息获取
   getUserInfo: function (e) {
-    app.globalData.userInfo = e.detail.userInfo
-    if(app.globalData.userInfo && this.data.userInfo){    //判断是否获取用户信息成功
-      this.setData({
-        userInfo: e.detail.userInfo,
-        hasUserInfo: true,
-      })
-    }
-
-    //判断用户是否连接网络
+  //判断用户是否连接网络
   wx.getNetworkType({
     success: function(res) {
       const netWorkType = res.networkType
@@ -94,6 +103,7 @@ Page({
           duration:1000
         })
       }
+      
       else if('2g' == netWorkType){         //用户接入2g网
         wx.showToast({
           title: '网络堵车中···',
@@ -104,7 +114,15 @@ Page({
     },
   })
 
-    if(this.data.hasUserInfo == true){        //获取用户信息成功，则修改界面内容
+    app.globalData.userInfo = e.detail.userInfo
+    if(app.globalData.userInfo && this.data.userInfo){    //判断是否获取用户信息成功
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true,
+      })
+    }
+
+    if(this.data.hasUserInfo == true){        //获取用户信息成功，则修改登录按钮提示信息
       this.setData({
         login:"你好",
        

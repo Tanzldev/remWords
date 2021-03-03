@@ -16,19 +16,19 @@
   <view class="scrollviewBody">
   <scroll-view class="scroll-view"  scroll-y="true" >
 
-    <view class="scrollviewItems" wx:for="{{scrollviewArray}}" >
+    <view class="scrollviewItems" wx:for="{{scrollviewArray}}" wx:key="key">
       <!-- index为数组元素下标，item为数组元素中的子成员变量 -->
       <!-- {{index}}: {{item.message}} -->
       
-      <image class="bookImg" src="../source/image/booksImg/lianci.jpg">
+      <image class="bookImg" src="{{item.bookImg}}">
       </image>        
         
       <!-- 词书中间说明 -->
       <view class="bookIntroBody">
         <view class="bookIntroText">
-          <text class="bookName">高中写作必备词汇</text>
-          <text class="wordsCount">1024词 · 高教社出版</text>
-          <text class="bookLabel">原序·最新</text>
+          <text class="bookName">{{item.bookName}}</text>
+          <text class="wordsCount">{{item.wordsCount}}词 · {{item.publisher}}</text>
+          <text class="bookLabel">{{item.bookLabel}}</text>
         </view>
       </view>
 
@@ -51,6 +51,12 @@
   </view>
 
 </view>
+
+
+<!--屏幕背景变暗的背景  -->
+<view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
+  <!--弹出框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">在这里写弹出框里面的布局</view>
 
 
 
