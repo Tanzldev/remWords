@@ -99,7 +99,6 @@ page {                         /*这里的page是手机页面的高度，为适�
   background: #b4e8f5;
   border-radius: 10rpx;
   text-align: center;
-
   z-index: 1;             /*将cover盖子显示在translattion之上，负数为底层，正数为顶层 */
 }
 .translateTip{

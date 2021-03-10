@@ -7,9 +7,9 @@ Page({
    */
   data: {
    
-   bookItem:"初中",
+   bookItem:"基础阶段",
    booksTypeImgSrc:"../source/image/tipBookTypeDown.jpg",
-   array: ['初中', '高中', '大学', '考研'],               //普通选择器的选择数组
+   array: ['基础阶段', '强化阶段', '冲刺阶段'],               //普通选择器的选择数组
    scrollHeight:0,    
 
    scrollviewArray: [{              //滑动选择器的结果数组   应根据所选等级从数据库中获取
@@ -19,6 +19,33 @@ Page({
     publisher:"高教社出版",
     wordsCount:1024,
     bookLabel:"最新·原版",
+    intr:"2021恋练有词考研英语词汇识记与应用大全，精选5500个词汇和词组，辅以真题例句解析，力助考生提高记词效率，更科学、更高效地学词。",
+    fondImgSrc:"../source/image/fondImg.jpg",       //收藏❤图标路径 
+    hasFond:false,                                  //是否已选择标记
+    tipSelect:"选择词书",                            //是否已选择文字显示
+    bgd:"#ffffff"                                   //是否已选择文字背景
+  },
+  {              //滑动选择器的结果数组   应根据所选等级从数据库中获取
+    id: 2,     
+    bookImg:"../source/image/booksImg/chuzhong.jpg",
+    bookName:"初中词汇基础",
+    publisher:"青海人民教育出版",
+    wordsCount:2423,
+    bookLabel:"最新·原版·免费",
+    intr:"在2020年2月1日由青海人民出版社出版的图书。作者是刘宗寅。本书内容包括单词及背单词的方法。",
+    fondImgSrc:"../source/image/fondImg.jpg",       //收藏❤图标路径 
+    hasFond:false,                                  //是否已选择标记
+    tipSelect:"选择词书",                            //是否已选择文字显示
+    bgd:"#ffffff"                                   //是否已选择文字背景
+  },
+  {              //滑动选择器的结果数组   应根据所选等级从数据库中获取
+    id: 3,     
+    bookImg:"../source/image/booksImg/hbs.jpg",
+    bookName:"考研红宝书",
+    publisher:"西北工业大学出版",
+    wordsCount:1024,
+    bookLabel:"最新·原版",
+    intr:"《红宝书·考研英语词汇》是由考研英语命题研究组编写，西北大学出版社在2014年出版的书籍。",
     fondImgSrc:"../source/image/fondImg.jpg",       //收藏❤图标路径 
     hasFond:false,                                  //是否已选择标记
     tipSelect:"选择词书",                            //是否已选择文字显示
@@ -26,6 +53,7 @@ Page({
   }
   ],
   
+  boxBook:{}
   },
 
   //词书类型按钮事件
@@ -56,23 +84,34 @@ Page({
   //词书详情
   bookDetail:function(e){
     var that = this;
-    var index = e.currentTarget.dataset.index;
+    let index = e.currentTarget.dataset.index;    //局级变量，函数结束系统收回
+    let bookItem = {};
+    bookItem.img = this.data.scrollviewArray[index].bookImg;
+    bookItem.name = this.data.scrollviewArray[index].bookName;
+    bookItem.count = this.data.scrollviewArray[index].wordsCount;
+    bookItem.publisher = this.data.scrollviewArray[index].publisher;
+    bookItem.intr = this.data.scrollviewArray[index].intr;
+    that.setData({
+      boxBook:bookItem
+    })
     //点击我显示底部弹出框
-    this.showModal();
-    // wx.showToast({
-    //   title: '你点击了' + index +"图书详情",
-    //   icon:'none'
-    // })
+    this.showModal();      //将获取的scrollview数组索引传入showModal函数
   },
 
   //选择词书  
   fondBook:function(e){
-    
+    if(app.globalData.userInfo == null){
+      wx.showToast({
+        title: '未登录',
+        icon:'none'
+      })
+      return;
+    }
     var that = this;
     var index = e.currentTarget.dataset.index;      //获取用户点击位置
     // console.log(index);
     //定义新的对象数据类型，获取值后，讲newBook对象压入app.js全局变量对象数组中
-    var newBook = {};
+    let newBook = {};
     newBook.id = this.data.scrollviewArray[index].id;
     newBook.bookImg = this.data.scrollviewArray[index].bookImg;
     newBook.bookName = this.data.scrollviewArray[index].bookName;
@@ -80,13 +119,18 @@ Page({
     newBook.wordsCount = this.data.scrollviewArray[index].wordsCount;
     
     //获取滑块数组中的index的img的路径变量
-    var src = "scrollviewArray["+index+"].fondImgSrc"; 
-    var hasFond = "scrollviewArray["+index+"].hasFond";
-    var tipSelect =  "scrollviewArray["+index+"].tipSelect";
-    var bgd = "scrollviewArray["+index+"].bgd";
+    let src = "scrollviewArray["+index+"].fondImgSrc"; 
+    let hasFond = "scrollviewArray["+index+"].hasFond";
+    let tipSelect =  "scrollviewArray["+index+"].tipSelect";
+    let bgd = "scrollviewArray["+index+"].bgd";
     
     if(this.data.scrollviewArray[index].hasFond == false){            
       app.globalData.fondBookArray.push(newBook);        //向app.js全局变量中压入newBook对象
+      wx.showToast({
+        title: '添加成功',
+        icon:'none',
+        duration:1500
+      })
       that.setData({
         [src]:"../source/image/SelectFondImg.jpg",
         [hasFond]:true,
@@ -119,7 +163,7 @@ showModal: function () {
     delay: 0
   })
   this.animation = animation
-  animation.translateY(800).step()   //滑档速度
+  animation.translateY(800).step()   //滑动速度
   this.setData({
     animationData: animation.export(),
     showModalStatus: true

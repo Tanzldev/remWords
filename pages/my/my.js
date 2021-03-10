@@ -1,10 +1,6 @@
 // pages/my/my.js
 const app = getApp()
 Page({
-
-  /**
-   * 页面的初始数据
-   */
   data: {
    login:"登录",            //界面按钮
    userName:"XXX",
@@ -53,7 +49,7 @@ Page({
       })
     }else{
       wx.showToast({
-        title: '未登录！',
+        title: '未登录',
         icon:'none'
       })
     }

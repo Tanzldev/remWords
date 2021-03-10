@@ -55,8 +55,28 @@
 
 <!--屏幕背景变暗的背景  -->
 <view class="commodity_screen" bindtap="hideModal" wx:if="{{showModalStatus}}"></view>
-  <!--弹出框  -->
-<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">在这里写弹出框里面的布局</view>
+  <!--半屏弹框  -->
+<view animation="{{animationData}}" class="commodity_attr_box" wx:if="{{showModalStatus}}">
+  <view class="box_top">
+    <image class="box_bookImg" src="{{boxBook.img}}"></image>
+    <!-- 词书右侧说明 -->
+    <view class="box_detail">
+      <text class="box_bookName">{{boxBook.name}}</text>
+      <text class="box_bookTip">{{boxBook.count}}词 · @{{boxBook.publisher}}</text>
+    </view>
+  </view>
+
+  <view class="box_line"></view>
+
+  <view class="box_intr">
+    <text style="font-weight:bold;fond-size:35rpx">简介：</text>
+    <view style="font-size: 35rpx;text-indent:2em;">
+      <text style="letter-spacing:6rpx;line-height:160%;">{{boxBook.intr}}</text>
+      
+    </view>
+
+  </view>
+</view>
 
 
 

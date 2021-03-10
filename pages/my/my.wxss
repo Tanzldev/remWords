@@ -5,7 +5,7 @@
   display: flex;
   width: 90%;
   height: 160rpx;
-  background: rgba(245, 245, 245, 0.842); 
+  /* background: #e4afaf;  */
   /* 水平居中 */
   margin: auto;
   /* 阴影 */
@@ -15,6 +15,18 @@
 
 }
 
+.bgdImg{
+  width: 90%;
+  height: 160rpx;
+  /*-webkit-filter: blur(2px);    图片高斯模糊
+  filter: blur(2px);*/
+  filter: opacity(50%);
+  position: absolute;
+  z-index: -1;
+  /* 边框圆角 */
+  border-radius: 20rpx;
+}
+
 .comUserInfo {
   display: flex;
   align-items: center;    /*垂直居中显示*/
@@ -22,21 +34,20 @@
 }
 
 .userHeadImage {
-
   display: block; /*块状显示*/
   width: 100rpx;
   height: 100rpx;
   /* margin-top: 15rpx; */
   margin-left: 20rpx;
   border-radius: 50rpx;     /*边框圆角处理*/
-
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0,0,0,0.2);
 }
 /* 问候语 */
 .login {
  
   font-size: 40rpx;
-  color: #e4afaf; 
-  background: rgba(245, 245, 245, 0.842); 
+  color: #fa6060; 
+  background: rgba(245, 245, 245, 0);     /*通过rgba调整透明度，使其背景为透明*/
   padding-left: 10rpx;
   margin-bottom: 50rpx;
   

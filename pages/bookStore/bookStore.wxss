@@ -16,7 +16,8 @@ page {
   display: flex;
   margin:auto;            /*水平居中显示*/
   align-items: center;    /*垂直居中显示*/
-  letter-spacing: 10rpx;  /*文字间距*/
+  letter-spacing: 3rpx;  /*文字间距
+  color: #15c6f2;*/
 }
 
 .booksTypeImg{
@@ -89,9 +90,9 @@ page {
 }
 
 .bookLabel{
-  background: #c3c5c5ee;
+  background: #ff9cca;
   width: fit-content;         /*根据内容填充，设置宽度*/
-  border-radius: 6rpx;        /*边框圆角处理*/
+  border-radius: 10rpx;        /*边框圆角处理*/
   margin-top: 20rpx;
   font-size: 25rpx;
   letter-spacing: 10rpx;
@@ -106,7 +107,7 @@ page {
   align-items: center;
   height: 180rpx;
   width: 180rpx;
-  
+  margin-left: 20rpx;
 }
 
 .dedailBody{
@@ -144,7 +145,6 @@ page {
 .fondImg{
   width: 30rpx;
   height: 30rpx;
- 
 }
 
 .selectBook{
@@ -177,6 +177,8 @@ page {
   width: 100%;
   overflow: hidden;
   position: fixed;
+  display: flex;
+  flex-direction: column;
   bottom: 0;
   left: 0;
   z-index: 1;
@@ -185,4 +187,53 @@ page {
   border-top-left-radius: 40rpx;
   border-top-right-radius: 40rpx;
 }
+
+.box_top{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;          /*垂直水平轴，居中对齐*/
+}
+.box_bookImg{
+  width: 175rpx;
+  height: 225rpx;
+  box-shadow: 5px 5px 2px #b5b1b0;      /*边框阴影*/
+}
+
+.box_detail{
+  width: fit-content;         /*设置水平宽度为内容占比*/
+  height: 225rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 45rpx;
+}
+.box_bookName{
+  letter-spacing: 5rpx;
+  font-size: 45rpx;
+  font-weight:bold;
+}
+.box_bookTip{
+  margin-top: 30rpx;
+  font-size: 30rpx;
+  color: #999b9bee;     
+}
+.box_line{
+  width: 94%;
+  height: 20rpx;
+  border-style:dashed;
+  border-left-style: none;
+  border-top-style: none;
+  border-right-style: none;
+  border-color: #b5b1b0;
+  margin-top: 40rpx;
+  margin-left: 3%;
+}
+
+.box_intr{
+  width: 90%;
+  height: 100%;
+  margin-left: 30rpx;
+  margin-top: 40rpx;
+}
+
 

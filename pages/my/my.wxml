@@ -4,8 +4,10 @@
 
   <!-- 用户信息 -->
   <view class="userInfo">
+    <!-- 顶层背景，有用户信息时，以用户头像填充背景 -->
+    <view class="bgdImg" style="background-image:url({{userInfo.avatarUrl}})" wx:if="{{hasUserInfo}}"></view>
+
     <view class="comUserInfo">
-    
       <block wx:if="{{hasUserInfo}}">
         <image class="userHeadImage" src="{{userInfo.avatarUrl}}"></image>
         <text class="userName" >用户名：{{userInfo.nickName}}</text>       
@@ -16,8 +18,7 @@
         <text class="userName">用户名：{{userName}}</text>
       </block>
 
-      <button style="width:20vw" class="login" size="default" open-type="getUserInfo" bindgetuserinfo="getUserInfo">{{login}}</button>
-      
+      <button style="width:20vw" class="login"  open-type="getUserInfo" bindgetuserinfo="getUserInfo">{{login}}</button>   
     </view> 
   </view>
 
