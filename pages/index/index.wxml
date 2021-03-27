@@ -1,1 +1,25 @@
 <!--index.wxml-->
+<view class="body">
+  <view class="headTip">
+    <view class="bookName">2021考研词汇基础</view>
+    <view class="changeBook">换书</view>
+  </view>
+
+  <!-- 环型进度条 -->
+  <view class="contain">
+     <view class='progress_box'>
+       <!-- 内环 -->
+        <canvas class="progress_bg"   canvas-id="canvasProgressbg">  </canvas> 
+        <!-- 外环 -->
+        <canvas class="progress_canvas"   canvas-id="canvasProgress">  </canvas> 
+        <view class="progress_text">            
+            <text class='progress_info'> {{progress_txt}}</text>
+        </view>     
+    </view>
+  </view>
+
+  <view class="bottomFunc">
+    <view class="review">复  习</view>
+    <view class="learn">学  习</view>
+  </view>
+</view>

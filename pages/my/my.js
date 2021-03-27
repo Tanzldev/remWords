@@ -63,7 +63,7 @@ Page({
       })
     }else{
       wx.showToast({
-        title: '未登录！',
+        title: '未登录',
         icon:'none'
       })
     }

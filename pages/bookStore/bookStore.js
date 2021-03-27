@@ -68,8 +68,9 @@ Page({
     this.setData({
       //使tipImg图标朝上
       booksTypeImgSrc:"../source/image/tipBookTypeDown.jpg",
-      bookItem:this.data.array[e.detail.value]
+      bookItem:this.data.array[e.detail.value]      
     })
+    let bookRank = e.detail.value;      //根据选择，得出选择的词书等级，并向服务器提交申请
     console.log(e.detail.value)
   },
 
@@ -139,9 +140,10 @@ Page({
        })
     } else{
       //★★★★★    取消选择后的操作，根据id删除已选词书数组中的数据
-      var id = this.data.scrollviewArray[index].id;
+      let id = this.data.scrollviewArray[index].id;
       console.log(id)
-      app.globalData.fondBookArray.splice(id,1);        //删除app.js中已选词书数组对象
+      //js中splice方法根据数组索引删除数组中的对象
+      app.globalData.fondBookArray.splice(id-1,1);        //删除app.js中已选词书数组对象
       
       that.setData({
         [src]:"../source/image/fondImg.jpg",

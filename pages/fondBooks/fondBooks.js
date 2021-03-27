@@ -19,7 +19,7 @@ Page({
 
   //删除词书
   deleteBookBtn:function(e){
-    var that = this;                         //未解决showModal中不能使用this.data删除数据
+    var that = this;                         //解决showModal中不能使用this.data删除数据
     var index = e.currentTarget.dataset.index;        //得到此时点击的图书索引
     var id = this.data.localFondArray[index].id;
     //★★★★★  似乎定义的array数组并没有开辟新的存储空间，而是通过类似指针的形式，指向了赋值数组

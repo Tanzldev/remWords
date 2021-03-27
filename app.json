@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/index/index",
     "pages/my/my",
     "pages/bookStore/bookStore",
-    "pages/index/index",
     "pages/myFeedBack/myFeedBack",
     "pages/set/set",
     "pages/fondBooks/fondBooks",

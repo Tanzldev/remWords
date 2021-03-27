@@ -41,6 +41,7 @@ Page({
           success(res) {
             //用户点击了确定
             if (res.confirm) {
+              app.globalData.userInfo = null
               prevPage.setData({
                 login: "登录",
                 hasUserInfo: false,   //将hasUserInfo否定

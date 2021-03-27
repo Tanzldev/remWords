@@ -1,1 +1,91 @@
 /**index.wxss**/
+.body{
+  display: flex;
+  flex-direction: column; 
+  align-items: center;
+}
+
+.headTip{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 60rpx;
+}
+.bookName{
+  font-size: 38rpx;
+}
+.changeBook{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: fit-content;
+  width: 80rpx;
+  font-size: 35rpx;
+  margin-left: 20rpx;
+  border-style: solid;
+  border-color: aquamarine;
+  border-radius: 15rpx;
+}
+
+.contain{
+  margin-top: 30%;
+}
+.progress_box{
+  position: relative;
+  width:220px;
+  height: 220px;  
+  display: flex;  
+  align-items: center;
+  justify-content: center;
+}
+.progress_bg{
+  position: absolute;
+  width:220px;
+  height: 220px; 
+}
+.progress_canvas{ 
+  width:220px;
+  height: 220px; 
+} 
+.progress_text{ 
+  position: absolute; 
+  display: flex;  
+  align-items: center;
+  justify-content: center
+}
+.progress_info{   
+  font-size: 56rpx;
+  padding-left: 16rpx;
+  letter-spacing: 2rpx
+} 
+
+.bottomFunc{
+  display: flex;
+  flex-direction:row;
+  justify-content: center;
+  margin-top: 20%;
+}
+.review{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 200rpx;
+  height: 80rpx;
+  border-style: solid;
+  border-radius: 20rpx;
+  border-color: #15c6f2;
+}
+.learn{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 200rpx;
+  height: 80rpx;
+  margin-left: 70rpx;
+  border-style: solid;
+  border-radius: 20rpx;
+  border-color: #15c6f2;
+}
