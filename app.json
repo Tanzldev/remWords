@@ -6,7 +6,8 @@
     "pages/myFeedBack/myFeedBack",
     "pages/set/set",
     "pages/fondBooks/fondBooks",
-    "pages/newWords/newWords"
+    "pages/newWords/newWords",
+    "pages/learn/learn"
   ],
   "window": {
     "backgroundTextStyle": "dark",

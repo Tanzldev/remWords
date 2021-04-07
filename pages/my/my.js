@@ -8,6 +8,7 @@ Page({
    versionNum:"v1.0.0",
    userInfo: {},
    hasUserInfo: false,
+   canIUseGetUserProfile: false,
    firstLogin:1,
    netWorkType:'4g',
    canIUse: wx.canIUse('button.open-type.getUserInfo')
@@ -16,30 +17,33 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    if (app.globalData.userInfo) {      //检测本地是否有用户信息
+  onLoad: function () {
+    // if (app.globalData.userInfo) {      //检测本地是否有用户信息
+    //   this.setData({
+    //     userInfo: app.globalData.userInfo, 
+    //   })
+    // } else if (this.data.canIUse) {
+    //   app.userInfoReadyCallback = res => {
+    //     this.setData({
+    //       userInfo: res.userInfo,        
+    //     })
+    //   }
+    // } else {
+    //   // 在没有 open-type=getUserInfo 版本的兼容处理
+    //   wx.getUserInfo({
+    //     success: res => {
+    //       app.globalData.userInfo = res.userInfo
+    //       this.setData({
+    //         userInfo: res.userInfo,           
+    //       })
+    //     }
+    //   })
+    // }
+    if (wx.getUserProfile) {
       this.setData({
-        userInfo: app.globalData.userInfo,
-        
-      })
-    } else if (this.data.canIUse) {
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,        
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,           
-          })
-        }
+        canIUseGetUserProfile: true
       })
     }
-
   },
 
   toFondBooks:function(){
@@ -85,9 +89,55 @@ Page({
     })
   },
  
-  //用户信息获取
-  getUserInfo: function (e) {
-  //判断用户是否连接网络
+  getUserProfile(e) {
+    //本地无用户信息时，发起申请
+    if(!this.data.hasUserInfo){
+    this.getNetWork();
+    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
+    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    wx.getUserProfile({
+      desc: '用于完善用户资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      success: (res) => {
+        app.globalData.userInfo = res.userInfo,
+        console.log("用户信息获取成功")
+        this.setData({
+          userInfo: res.userInfo,
+          hasUserInfo: true
+        })
+        console.log(this.data.hasUserInfo)
+        if(this.data.hasUserInfo){        //获取用户信息成功，则修改登录按钮提示信息
+          this.setData({
+            login:"你好" 
+          })
+        }
+        //向服务器提交用户信息             
+        wx.request({                                      //request请求
+          url:app.globalData.netUrl+'serUser.php',
+          header: { "Content-Type": "application/x-www-form-urlencoded" },
+          method: "POST",
+          data: {                                         //数据项
+            type:1,
+            name: res.userInfo.nickName,
+            gender:res.userInfo.gender,
+            country: res.userInfo.country,
+            province: res.userInfo.province,
+            city:res.userInfo.city
+          },
+
+          success: function (res) {            //向服务器提交用户信息成功
+            console.log(res)
+          },
+          fail: function (res) {               //提交用户信息失败
+            console.log(res)
+          }    
+        })  
+      }
+    })
+    
+  } 
+  },
+//判断用户是否连接网络
+  getNetWork:function(){   
   wx.getNetworkType({
     success: function(res) {
       const netWorkType = res.networkType
@@ -109,66 +159,18 @@ Page({
       }
     },
   })
-
-    app.globalData.userInfo = e.detail.userInfo
-    if(app.globalData.userInfo && this.data.userInfo){    //判断是否获取用户信息成功
-      this.setData({
-        userInfo: e.detail.userInfo,
-        hasUserInfo: true,
-      })
-    }
-
-    if(this.data.hasUserInfo == true){        //获取用户信息成功，则修改登录按钮提示信息
-      this.setData({
-        login:"你好",
-       
-      })
-    }
-
-    //向服务器提交用户信息
-    // var db = 0;               
-    wx.getUserInfo({
-      success: function (res) {
-        //用户是第一次登录，则向服务器提交用户信息
-        if (app.globalData.firstLogin == 1) {         
-          var name=res.userInfo.nickName;
-          var gender=0;
-          var province = res.userInfo.province;
-          var city = res.userInfo.city;
-          var country = res.userInfo.country
-          wx.request({                                      //request请求
-            url:app.globalData.netUrl+'add_users.php',
-            header: { "Content-Type": "application/x-www-form-urlencoded" },
-            method: "POST",
-            data: {                                         //数据项
-              name: res.userInfo.nickName,
-              gender:res.userInfo.gender,
-              country: res.userInfo.country,
-              province: res.userInfo.province,
-              city:res.userInfo.city
-             
-            },
-            success: function () {            //向服务器提交用户信息成功
-              console.log("success")
-            },
-
-            fail: function () {               //提交用户信息失败
-              console.log("fail"),
-                console.log(name),
-                console.log(gender),
-                console.log(province),
-                console.log(city),
-                console.log(country)
-            }
-           
-          })
-          
-        }
-        //修改全局变量，标记用户已经登录过，不能再向服务器提信息
-        app.globalData.firstLogin=0;      
-      }
-    })  
   },
+
+  // //用户信息获取
+  // getUserInfo: function (e) {
+  //   app.globalData.userInfo = e.detail.userInfo
+  //   if(app.globalData.userInfo && this.data.userInfo){    //判断是否获取用户信息成功
+  //     this.setData({
+  //       userInfo: e.detail.userInfo,
+  //       hasUserInfo: true,
+  //     })
+  //   }
+  // },
   
 
   /**

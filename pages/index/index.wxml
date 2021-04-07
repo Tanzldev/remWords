@@ -1,14 +1,15 @@
 <!--index.wxml-->
 <view class="body">
+  
   <view class="headTip">
     <view class="bookName">2021考研词汇基础</view>
-    <view class="changeBook">换书</view>
+    <view class="changeBook" bindtap="changeBook">换书</view>
   </view>
 
   <!-- 环型进度条 -->
   <view class="contain">
-     <view class='progress_box'>
-       <!-- 内环 -->
+    <view class='progress_box'>
+       <!-- 内环 -->                                                                  
         <canvas class="progress_bg"   canvas-id="canvasProgressbg">  </canvas> 
         <!-- 外环 -->
         <canvas class="progress_canvas"   canvas-id="canvasProgress">  </canvas> 
@@ -16,10 +17,18 @@
             <text class='progress_info'> {{progress_txt}}</text>
         </view>     
     </view>
-  </view>
+    <view class="processTip">完成进度</view>
 
   <view class="bottomFunc">
-    <view class="review">复  习</view>
-    <view class="learn">学  习</view>
+    <view class="review" bindtap="review">复  习</view>
+    <view class="learn" bindtap="learn">学  习</view>
+  </view>
+
+  </view>
+
+  <!-- 页面遮罩层 -->
+  <view class="cover" wx:if="{{!hasUserInfo}}">
+    <view class="userTip" bindtap="toLogin">请先登录</view>
   </view>
 </view>
+

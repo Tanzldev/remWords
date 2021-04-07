@@ -18,7 +18,8 @@
         <text class="userName">用户名：{{userName}}</text>
       </block>
 
-      <button style="width:20vw" class="login"  open-type="getUserInfo" bindgetuserinfo="getUserInfo">{{login}}</button>   
+      <button wx:if="{{canIUseGetUserProfile}}" style="width:20vw" class="login" bindtap="getUserProfile"> {{login}} </button>
+      
     </view> 
   </view>
 
