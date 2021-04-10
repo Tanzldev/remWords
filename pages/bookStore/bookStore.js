@@ -1,19 +1,12 @@
-// pages/complete/complete.js
 const app = getApp();             //要访问app.js中的全局变量的必要代码
 Page({
-  
-  /**
-   * 页面的初始数据
-   */
-  data: {
-   
+
+  data: { 
    bookItem:"所有词书",
    booksTypeImgSrc:"../source/image/tipBookTypeDown.jpg",
-   array: ['所有词书','基础阶段', '强化阶段', '冲刺阶段'],               //普通选择器的选择数组
+   array: ['所有词书','基础阶段', '强化阶段', '冲刺阶段'],             //普通选择器的选择数组
    scrollHeight:0,    
-
-   scrollviewArray: 
-   [
+   scrollviewArray:[], 
   //    {              //滑动选择器的结果数组   应根据所选等级从数据库中获取
   //   id: 1,     
   //   image:"../source/image/booksImg/lianci.jpg",
@@ -26,38 +19,9 @@ Page({
   //   hasFond:false,                                  //是否已选择标记
   //   tipSelect:"选择词书",                            //是否已选择文字显示
   //   bgd:"#ffffff"                                   //是否已选择文字背景
-  // },
-  // {              //滑动选择器的结果数组   应根据所选等级从数据库中获取
-  //   id: 2,     
-  //   image:"../source/image/booksImg/chuzhong.jpg",
-  //   name:"初中词汇基础",
-  //   publisher:"青海人民教育出版",
-  //   count:2423,
-  //   label:"最新·原版·免费",
-  //   intr:"在2020年2月1日由青海人民出版社出版的图书。作者是刘宗寅。本书内容包括单词及背单词的方法。",
-  //   fondImgSrc:"../source/image/fondImg.jpg",       //收藏❤图标路径 
-  //   hasFond:false,                                  //是否已选择标记
-  //   tipSelect:"选择词书",                            //是否已选择文字显示
-  //   bgd:"#ffffff"                                   //是否已选择文字背景
-  // },
-  // {              
-  //   id: 3,     
-  //   image:"../source/image/booksImg/hbs.jpg",
-  //   name:"考研红宝书",
-  //   publisher:"西北工业大学出版",
-  //   count:1024,
-  //   label:"最新·原版",
-  //   intr:"《红宝书·考研英语词汇》是由考研英语命题研究组编写，西北大学出版社在2014年出版的书籍。",
-  //   fondImgSrc:"../source/image/fondImg.jpg",       //收藏❤图标路径 
-  //   hasFond:false,                                  //是否已选择标记
-  //   tipSelect:"选择词书",                            //是否已选择文字显示
-  //   bgd:"#ffffff"                                   //是否已选择文字背景
   // }
-  ],
-  
-  boxBook:{}
+    boxBook:{}
   },
-
   //词书类型按钮事件，点击词书类型后，将指引图标朝上
   booksTypeBtn:function() {
     
@@ -67,13 +31,52 @@ Page({
   },
   //词书类型展开后，用户点击确定事件
   bindPickerChange:function name(e) {
+    var that = this;
     this.setData({
       //使tipImg图标朝上
       booksTypeImgSrc:"../source/image/tipBookTypeDown.jpg",
       bookItem:this.data.array[e.detail.value]      
     })
-    let bookRank = e.detail.value;      //根据选择，得出选择的词书等级，并向服务器提交申请
-    
+    var bookRank = e.detail.value;      //根据选择，得出选择的词书等级，并向服务器提交申请
+    wx.request({
+      url: app.globalData.netUrl + 'serBooks.php',
+      header: { "Content-Type": "application/x-www-form-urlencoded" },
+      method:"POST",
+      data:{
+        rank:bookRank
+      },
+      success:function(res){
+        //对服务端返回的数据组装
+        for(let i = 0;i < res.data.length;i++){
+          res.data[i].image = "../source/image/booksImg/" + res.data[i].image;
+          res.data[i].fondImgSrc = "../source/image/fondImg.jpg";
+          res.data[i].hasFond = false;
+          res.data[i].tipSelect = "选择词书";
+          res.data[i].bgd = "#ffffff";
+          
+        }
+        //判断用户收藏词书数组是否为空，否则进行scrollview数组数据重组
+        if(app.globalData.fondBookArr.length != 0){
+          for(let i = 0;i < res.data.length;i++){
+              if(app.globalData.fondBookArr.indexOf(res.data[i].id) > -1){
+                res.data[i].fondImgSrc = "../source/image/SelectFondImg.jpg",
+                res.data[i].hasFond = true,
+                res.data[i].tipSelect = "取消选择",
+                res.data[i].bgd = "#eb6877"
+              }
+          }
+        }
+        that.setData({
+          scrollviewArray:res.data    
+        })
+      },
+      fail:function(res){
+        wx.showToast({
+          title: '遇到错误' + res.errMsg,
+          icon:'none'
+        })
+      }
+    })
     console.log(bookRank)
   },
 
@@ -129,35 +132,80 @@ Page({
     let bgd = "scrollviewArray["+index+"].bgd";
     
     if(this.data.scrollviewArray[index].hasFond == false){            
-      app.globalData.fondBookArray.push(newBook);        //向app.js全局变量中压入newBook对象
-      wx.showToast({
-        title: '添加成功',
-        icon:'none',
-        duration:1500
-      })
-      that.setData({
-        [src]:"../source/image/SelectFondImg.jpg",
-        [hasFond]:true,
-        [tipSelect]:"取消选择",
-        [bgd]:"#eb6877"
-       })
+      wx.request({
+        url: app.globalData.netUrl + 'fondBook.php',
+        header: { "Content-Type": "application/x-www-form-urlencoded" },
+        method: "POST", 
+        //向服务器提交的数据
+        data:{
+            type:1,           //请求码1收藏词书
+            bookId:newBook.id,
+            userName:app.globalData.userInfo.nickName           
+          },
+        success:function(res){
+            console.log(res) 
+            wx.showToast({
+              title: '添加成功',
+              icon:'none',
+              duration:1500
+            })
+            that.setData({
+              [src]:"../source/image/SelectFondImg.jpg",
+              [hasFond]:true,
+              [tipSelect]:"取消选择",
+              [bgd]:"#eb6877"
+             })   
+             //向app.js全局变量中压入newBook对象  
+             app.globalData.fondBookArray.push(newBook)  
+             app.getUserFondBook(app.globalData.userInfo.nickName)
+          },
+        fail:function(res){
+            wx.showToast({
+              title: "收藏失败" + res.errMsg,
+              icon:'none'
+           })
+          }, 
+      })  
+         
     } else{
       //★★★★★    取消选择后的操作，根据id删除已选词书数组中的数据
       let id = this.data.scrollviewArray[index].id;
-      console.log(id)
-      //js中splice方法根据数组索引删除数组中的对象
-      app.globalData.fondBookArray.splice(id-1,1);        //删除app.js中已选词书数组对象
-      
-      that.setData({
-        [src]:"../source/image/fondImg.jpg",
-        [hasFond]:false,
-        [tipSelect]:"选择词书",
-        [bgd]:"#ffffff"
-       })
+      wx.request({
+        url: app.globalData.netUrl + 'fondBook.php',
+        header: { "Content-Type": "application/x-www-form-urlencoded" },
+        method: "POST", 
+        data:{
+          type:0,           //请求码0删除词书
+          bookId:newBook.id,    
+        },
+        
+        success:function(res){
+          //js中splice方法根据数组索引删除数组中的对象
+          //删除app.js中已选词书数组对象
+          app.globalData.fondBookArray.splice(id-1,1) 
+          app.getUserFondBook(app.globalData.userInfo.nickName)     
+          that.setData({
+              [src]:"../source/image/fondImg.jpg",
+              [hasFond]:false,
+              [tipSelect]:"选择词书",
+              [bgd]:"#ffffff"
+            })
+          wx.showToast({
+            title: '删除成功',
+            icon:'none'
+          })
+          },
+        fail:function(res){
+            wx.showToast({
+              title: "遇到错误" + res.errMsg,
+              icon:'none'
+           })
+          }, 
+      })
+     
     } 
      
   },
-
 
   //显示对话框
   showModal: function () {
@@ -207,23 +255,17 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    
-  },
-
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
+  onLoad: function () {
+    console.log("生命周期函数--监听页面开始加载")
     var that = this;
-    //页面加载时，向服务器发出请求，rank=all显示所用词书
+    //页面加载时，向服务器发出请求，rank=0显示所用词书
     wx.request({
       url: app.globalData.netUrl + "serBooks.php",
-      header: {'Content-Type':'application/json' },
+      header: { "Content-Type": "application/x-www-form-urlencoded" },
       method:"POST",
-      //向服务端发送的数据 
+      //向服务端发送的数据 rank=0为返回所有词书
       data:{
-        type:0
+        rank:0
       },
       //服务端响应成功，返回JSON对象，解析成数组由scrollviewArray接收
       success:function(res){
@@ -239,14 +281,23 @@ Page({
           res.data[i].tipSelect = "选择词书";
           res.data[i].bgd = "#ffffff";
         }
+        if(app.globalData.fondBookArr.length != 0){
+          for(let i = 0;i < res.data.length;i++){
+            //console.log("i="+i)
+              if(app.globalData.fondBookArr.indexOf(res.data[i].id) > -1){
+                res.data[i].fondImgSrc = "../source/image/SelectFondImg.jpg",
+                res.data[i].hasFond = true,
+                res.data[i].tipSelect = "取消选择",
+                res.data[i].bgd = "#eb6877"
+              }
+          }
+        }
         that.setData({
           scrollviewArray:res.data    
         })
-
-        console.log(res.data)
-        console.log(res.data.length)
-        console.log(typeof(res.data))
-        //console.log(that.data.scrollviewArray)
+        
+        console.log(that.data.scrollviewArray),
+        console.log(typeof(that.data.scrollviewArray[0].id))
       },
       fail:function(res){
         wx.showToast({
@@ -255,13 +306,38 @@ Page({
         })
       }
     })
+    console.log("生命周期函数--监听页面加载完成")
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+    
+    
   },
 
   /**
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    console.log("生命周期函数--监听页面显示")
+    let tempArray = this.data.scrollviewArray;
+    //判断用户收藏词书数组是否为空，否则进行scrollview数组数据重组
+    if(app.globalData.fondBookArr.length != 0){
+      for(let i = 0;i < tempArray.length;i++){
+        console.log("i="+i)
+          if(app.globalData.fondBookArr.indexOf(tempArray[i].id) > -1){
+            tempArray[i].fondImgSrc = "../source/image/SelectFondImg.jpg",
+            tempArray[i].hasFond = true,
+            tempArray[i].tipSelect = "取消选择",
+            tempArray[i].bgd = "#eb6877"
+          }
+      }
+    }
+    this.setData({
+      scrollviewArray:tempArray    
+    })
   },
 
   /**

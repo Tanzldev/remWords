@@ -9,7 +9,6 @@ Page({
    userInfo: {},
    hasUserInfo: false,
    canIUseGetUserProfile: false,
-   firstLogin:1,
    netWorkType:'4g',
    canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
@@ -18,27 +17,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function () {
-    // if (app.globalData.userInfo) {      //检测本地是否有用户信息
-    //   this.setData({
-    //     userInfo: app.globalData.userInfo, 
-    //   })
-    // } else if (this.data.canIUse) {
-    //   app.userInfoReadyCallback = res => {
-    //     this.setData({
-    //       userInfo: res.userInfo,        
-    //     })
-    //   }
-    // } else {
-    //   // 在没有 open-type=getUserInfo 版本的兼容处理
-    //   wx.getUserInfo({
-    //     success: res => {
-    //       app.globalData.userInfo = res.userInfo
-    //       this.setData({
-    //         userInfo: res.userInfo,           
-    //       })
-    //     }
-    //   })
-    // }
+   
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
@@ -93,10 +72,9 @@ Page({
     //本地无用户信息时，发起申请
     if(!this.data.hasUserInfo){
     this.getNetWork();
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认
-    // 开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
+    // 获取用户信息
     wx.getUserProfile({
-      desc: '用于完善用户资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
+      desc: '用于完善用户资料', // 声明获取用户个人信息后的用途，后续会展示在弹窗中
       success: (res) => {
         app.globalData.userInfo = res.userInfo,
         console.log("用户信息获取成功")
@@ -131,6 +109,9 @@ Page({
             console.log(res)
           }    
         })  
+
+        //通过用户id,获取用户已经收藏的词书id
+        app.getUserFondBook(res.userInfo.nickName)
       }
     })
     
@@ -160,18 +141,6 @@ Page({
     },
   })
   },
-
-  // //用户信息获取
-  // getUserInfo: function (e) {
-  //   app.globalData.userInfo = e.detail.userInfo
-  //   if(app.globalData.userInfo && this.data.userInfo){    //判断是否获取用户信息成功
-  //     this.setData({
-  //       userInfo: e.detail.userInfo,
-  //       hasUserInfo: true,
-  //     })
-  //   }
-  // },
-  
 
   /**
    * 生命周期函数--监听页面初次渲染完成
