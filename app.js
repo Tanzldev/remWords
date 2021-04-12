@@ -3,8 +3,8 @@ App({
   globalData: {
     userInfo:null,
     netUrl: 'http://localhost/remWords/server/',   
-    fondBookArr:[],          //用户点击登录后，存储用户已经收藏的词书id
-    fondBookArray:[]         //本地用户收藏图书数组        
+    fondBookArr:[]           //用户点击登录后，存储用户已经收藏的词书id
+    //fondBookArray:[]       //本地用户收藏图书数组        
   },
 
   getUserFondBook:function(userName){
@@ -21,8 +21,8 @@ App({
       },
       success:function(res){
         that.globalData.fondBookArr = res.data,
-        console.log(that.globalData.fondBookArr),
-        console.log(typeof(that.globalData.fondBookArr[0]))
+        console.log(that.globalData.fondBookArr)
+        //console.log(typeof(that.globalData.fondBookArr[0]))
       },
       fail:function(res){
         console.log(res.errMsg)

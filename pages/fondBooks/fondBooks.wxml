@@ -11,12 +11,12 @@
   <!-- 已选图书列表,需要根据结果数组循环渲染该列表 -->
   <view class="booksBody" wx:for="{{localFondArray}}" wx:key="key">      
       
-     <image class="bookImg" src="{{item.bookImg}}"></image>
+     <image class="bookImg" src="{{item.image}}"></image>
 
      <view class="bookIntroText">
-      <text class="bookName">{{item.bookName}}</text>
+      <text class="bookName">{{item.name}}</text>
       <text class="publisher">@{{item.publisher}}</text>
-      <text class="wordsCount">共{{item.wordsCount}}词</text>
+      <text class="wordsCount">共{{item.count}}词</text>
      </view>
      
      <!-- 删除词书 -->

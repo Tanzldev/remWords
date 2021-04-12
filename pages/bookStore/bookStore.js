@@ -7,19 +7,6 @@ Page({
    array: ['所有词书','基础阶段', '强化阶段', '冲刺阶段'],             //普通选择器的选择数组
    scrollHeight:0,    
    scrollviewArray:[], 
-  //    {              //滑动选择器的结果数组   应根据所选等级从数据库中获取
-  //   id: 1,     
-  //   image:"../source/image/booksImg/lianci.jpg",
-  //   name:"考研词汇基础",
-  //   publisher:"高教社出版",
-  //   count:1024,
-  //   label:"最新·原版",
-  //   intr:"2021恋练有词考研英语词汇识记与应用大全，精选5500个词汇和词组，辅以真题例句解析，力助考生提高记词效率，更科学、更高效地学词。",
-  //   fondImgSrc:"../source/image/fondImg.jpg",       //收藏❤图标路径 
-  //   hasFond:false,                                  //是否已选择标记
-  //   tipSelect:"选择词书",                            //是否已选择文字显示
-  //   bgd:"#ffffff"                                   //是否已选择文字背景
-  // }
     boxBook:{}
   },
   //词书类型按钮事件，点击词书类型后，将指引图标朝上
@@ -118,13 +105,9 @@ Page({
     var index = e.currentTarget.dataset.index;      //获取用户点击位置
     // console.log(index);
     //定义新的对象数据类型，获取值后，讲newBook对象压入app.js全局变量对象数组中
-    let newBook = {};
-    newBook.id = this.data.scrollviewArray[index].id;
-    newBook.bookImg = this.data.scrollviewArray[index].image;
-    newBook.bookName = this.data.scrollviewArray[index].name;
-    newBook.publisher = this.data.scrollviewArray[index].publisher;
-    newBook.wordsCount = this.data.scrollviewArray[index].count;
-    
+    // let newBook = {};
+    // newBook.id = this.data.scrollviewArray[index].id;
+   
     //获取滑块数组中的index的img的路径变量
     let src = "scrollviewArray["+index+"].fondImgSrc"; 
     let hasFond = "scrollviewArray["+index+"].hasFond";
@@ -139,7 +122,7 @@ Page({
         //向服务器提交的数据
         data:{
             type:1,           //请求码1收藏词书
-            bookId:newBook.id,
+            bookId:this.data.scrollviewArray[index].id,
             userName:app.globalData.userInfo.nickName           
           },
         success:function(res){
@@ -156,7 +139,7 @@ Page({
               [bgd]:"#eb6877"
              })   
              //向app.js全局变量中压入newBook对象  
-             app.globalData.fondBookArray.push(newBook)  
+             //app.globalData.fondBookArray.push(newBook)  
              app.getUserFondBook(app.globalData.userInfo.nickName)
           },
         fail:function(res){
@@ -169,20 +152,19 @@ Page({
          
     } else{
       //★★★★★    取消选择后的操作，根据id删除已选词书数组中的数据
-      let id = this.data.scrollviewArray[index].id;
       wx.request({
         url: app.globalData.netUrl + 'fondBook.php',
         header: { "Content-Type": "application/x-www-form-urlencoded" },
         method: "POST", 
         data:{
           type:0,           //请求码0删除词书
-          bookId:newBook.id,    
+          bookId:this.data.scrollviewArray[index].id    
         },
         
         success:function(res){
           //js中splice方法根据数组索引删除数组中的对象
           //删除app.js中已选词书数组对象
-          app.globalData.fondBookArray.splice(id-1,1) 
+          //app.globalData.fondBookArray.splice(id-1,1) 
           app.getUserFondBook(app.globalData.userInfo.nickName)     
           that.setData({
               [src]:"../source/image/fondImg.jpg",
@@ -281,6 +263,7 @@ Page({
           res.data[i].tipSelect = "选择词书";
           res.data[i].bgd = "#ffffff";
         }
+        //如果用户已经成功登录，并且用户收藏词书数组不为空，则进行数据重新组合
         if(app.globalData.fondBookArr.length != 0){
           for(let i = 0;i < res.data.length;i++){
             //console.log("i="+i)
@@ -321,9 +304,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    console.log("生命周期函数--监听页面显示")
+    console.log("生命周期函数--监听页面显示") 
+    //解决用户先进入词库界面，后登录再次返回词库界面时，不能动态显示数据
+    //解决用户在已选词书界面对词书删除后，回到词库界面，不能动态显示数据bug
+    //得到此刻词库界面词书等级的所有词书，先初始化为都没有  选择词书
     let tempArray = this.data.scrollviewArray;
-    //判断用户收藏词书数组是否为空，否则进行scrollview数组数据重组
+    for(let i = 0;i < tempArray.length;i++){
+      tempArray[i].fondImgSrc = "../source/image/fondImg.jpg";
+      tempArray[i].hasFond = false;
+      tempArray[i].tipSelect = "选择词书";
+      tempArray[i].bgd = "#ffffff";
+    }
+    //根据全局变量已选词书数组，对tempArray数组数据重组，动态显示数据
     if(app.globalData.fondBookArr.length != 0){
       for(let i = 0;i < tempArray.length;i++){
         console.log("i="+i)
@@ -338,6 +330,7 @@ Page({
     this.setData({
       scrollviewArray:tempArray    
     })
+    
   },
 
   /**
