@@ -94,7 +94,7 @@ page {                         /*这里的page是手机页面的高度，为适�
   position: absolute;
   height: 60rpx;
   width: 90%;
-  margin-top: 40rpx;
+  margin-top: 60rpx;      /*上边距*/
   margin-left: 5%;
   background: #b4e8f5;
   border-radius: 10rpx;

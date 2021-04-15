@@ -233,7 +233,7 @@ page {
   width: 90%;
   height: 100%;
   margin-left: 30rpx;
-  margin-top: 40rpx;
+  margin-top: 20rpx;
 }
 
 

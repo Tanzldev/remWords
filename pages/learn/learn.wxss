@@ -1,1 +1,46 @@
 /* pages/learn/learn.wxss */
+.page{
+  height: 100%;
+  width: 100%;
+}
+.body{
+  display: flex;
+  flex-direction: column;     /*竖直方向为主轴*/
+  /* justify-content: center; */
+  align-items: center;        /*主轴方向上，对齐*/
+}
+.wordBody{
+  height: 180rpx;
+  width: fit-content;
+  /* background: #dd5555; */
+  margin-top: 20%;
+  text-align: center;
+}
+.word{
+  font-size: 60rpx;
+  font-weight: bolder;
+  color: #458aff;
+}
+.translateBody{
+  display: flex;
+  flex-direction: column;     /*主轴方向为竖直方向*/
+  width: 100%;
+  align-items: center;
+}
+.item{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 110rpx;
+  width: 90%;
+  border: 5rpx solid;     /*边框*/
+  border-color: aqua;
+  border-radius: 80rpx;
+  margin-top: 5%;
+  
+}
+.itemfont{
+  font-size: 35rpx;
+  letter-spacing: 5rpx;
+}

@@ -8,6 +8,7 @@
     "pages/fondBooks/fondBooks",
     "pages/newWords/newWords",
     "pages/learn/learn"
+    
   ],
   "window": {
     "backgroundTextStyle": "dark",

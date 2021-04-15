@@ -71,10 +71,8 @@
   <view class="box_intr">
     <text style="font-weight:bold;fond-size:35rpx">简介：</text>
     <view style="font-size: 35rpx;text-indent:2em;">
-      <text style="letter-spacing:6rpx;line-height:160%;">{{boxBook.intr}}</text>
-      
+      <text style="letter-spacing:6rpx;line-height:160%;">{{boxBook.intr}}</text>    
     </view>
-
   </view>
 </view>
 

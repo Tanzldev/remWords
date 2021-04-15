@@ -1,4 +1,13 @@
 <!--pages/learn/learn.wxml-->
 <view class="body">
-
+  <view class="wordBody">
+    <text class="word">{{english}}</text>
+  </view>
+  <!-- 选择部分 -->
+  <view class="translateBody">
+    <!-- data-index数组索引绑定 -->
+    <view class="item" wx:for="{{chineseArray}}" bindtap='select' wx:key="unique" data-index="{{index}}" style="border-color:{{borderColor}}">
+      <text class="itemfont">{{item.chinese}}</text>
+    </view>
+  </view>
 </view>

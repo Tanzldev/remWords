@@ -7,7 +7,7 @@ Page({
    array: ['所有词书','基础阶段', '强化阶段', '冲刺阶段'],             //普通选择器的选择数组
    scrollHeight:0,    
    scrollviewArray:[], 
-    boxBook:{}
+   boxBook:{}
   },
   //词书类型按钮事件，点击词书类型后，将指引图标朝上
   booksTypeBtn:function() {
@@ -77,7 +77,7 @@ Page({
 
   //词书详情
   bookDetail:function(e){
-    var that = this;
+    let that = this;
     let index = e.currentTarget.dataset.index;    //局级变量，函数结束系统收回
     let bookItem = {};
     bookItem.img = this.data.scrollviewArray[index].image;
