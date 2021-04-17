@@ -2,9 +2,9 @@
 <view class="body">
 
   <view class="booksType">
-    <view class="booksTypeBody">
+    <view class="booksTypeBody" bindtap="booksTypeBtn">
       <!-- value为Picker选择后携带的返回值，range为选择的自定义范围，这里的选择器数组名好像不能更改，必须为array-->
-      <picker bindchange="bindPickerChange" bindcancel="bindPickerCancel" value="{{index}}"range="{{array}}" bindtap="booksTypeBtn">{{bookItem}}</picker>
+      <picker bindchange="bindPickerChange" bindcancel="bindPickerCancel" value="{{index}}"range="{{array}}">{{bookItem}}</picker>
       <image class="booksTypeImg" src="{{booksTypeImgSrc}}"></image>
     </view>
   

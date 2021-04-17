@@ -11,15 +11,19 @@
   <!-- 已选图书列表,需要根据结果数组循环渲染该列表 -->
   <view class="booksBody" wx:for="{{localFondArray}}" wx:key="key">      
       
-     <image class="bookImg" src="{{item.image}}"></image>
+     <image class="bookImg" src="{{item.image}}" bindtap="recitedBookBtn" data-index="{{index}}"></image>
 
-     <view class="bookIntroText">
+     <view class="bookIntroText" bindtap="recitedBookBtn" data-index="{{index}}">
       <text class="bookName">{{item.name}}</text>
       <text class="publisher">@{{item.publisher}}</text>
       <text class="wordsCount">共{{item.count}}词</text>
      </view>
      
-     <!-- 删除词书 -->
-     <image class="deleteBook" src="../source/image/deleteBook.jpg" bindtap="deleteBookBtn" data-index="{{index}}"></image>
+     
+      <view class="recitedBook" wx:if="{{item.showRecite}}">正在背诵</view>
+      <!-- 删除词书 -->
+      <image class="deleteBook" src="../source/image/deleteBook.jpg" bindtap="deleteBookBtn" data-index="{{index}}"></image>
+     
+     
   </view>
 </view>

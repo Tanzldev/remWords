@@ -10,15 +10,23 @@
   align-items: center;        /*主轴方向上，对齐*/
 }
 .wordBody{
+  display: flex;
+  flex-direction: column;
+  align-content: center;
   height: 180rpx;
   width: fit-content;
   /* background: #dd5555; */
   margin-top: 20%;
   text-align: center;
 }
-.word{
+.wordEnglish{
   font-size: 60rpx;
   font-weight: bolder;
+  color: #458aff;
+}
+.wordChinese{
+  font-size: 40rpx;
+  margin-top: 20rpx;
   color: #458aff;
 }
 .translateBody{
@@ -34,8 +42,8 @@
   justify-content: center;
   height: 110rpx;
   width: 90%;
-  border: 5rpx solid;     /*边框*/
-  border-color: aqua;
+  border-style:solid;
+  /* border-color:#20c000; */
   border-radius: 80rpx;
   margin-top: 5%;
   
@@ -43,4 +51,55 @@
 .itemfont{
   font-size: 35rpx;
   letter-spacing: 5rpx;
+}
+
+/* 提示操作层 */
+.coverBody{
+  position: absolute;
+  height: 70%;
+  width: 95%;
+  margin-top: 45%;      /*上边距*/
+  border-radius: 15rpx;
+  background: #638181;
+  border-radius: 30rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;            /*开启z轴显示，显示在原始图层上方*/
+}
+.wrongTip{
+  font-size: 40rpx;
+  color: #ffffff;
+  margin-top: 40rpx;
+}
+.tipImg{
+  width: 300rpx;
+  height: 300rpx;
+  margin-top: 60rpx;
+}
+.btnContinue{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90rpx;
+  width: 90%;
+  border-radius: 20rpx;
+  margin-top: 100rpx;
+  background: #00b900;
+}
+.btnAddWord{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90rpx;
+  width: 90%;
+  border-radius: 20rpx;
+  margin-top: 40rpx;
+  background: #eb0d0d;
+}
+.tipFont{
+  font-size: 40rpx;
+  color: #ffffff;
 }

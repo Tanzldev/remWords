@@ -7,8 +7,7 @@
     "pages/set/set",
     "pages/fondBooks/fondBooks",
     "pages/newWords/newWords",
-    "pages/learn/learn"
-    
+    "pages/learn/learn" 
   ],
   "window": {
     "backgroundTextStyle": "dark",

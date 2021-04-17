@@ -1,13 +1,29 @@
 <!--pages/learn/learn.wxml-->
 <view class="body">
+  <!-- 单词显示区域 -->
   <view class="wordBody">
-    <text class="word">{{english}}</text>
+    <text class="wordEnglish">{{english}}</text>
+    <text class="wordChinese" wx:if="{{tipCover}}">{{chinese}}</text>
   </view>
   <!-- 选择部分 -->
   <view class="translateBody">
     <!-- data-index数组索引绑定 -->
-    <view class="item" wx:for="{{chineseArray}}" bindtap='select' wx:key="unique" data-index="{{index}}" style="border-color:{{borderColor}}">
+    <view class="item" wx:for="{{chineseArray}}" bindtap='select' wx:key="unique" data-index="{{index}}" style="border-color:{{item.borderColor}};border-width: {{item.borderWidth}}">
       <text class="itemfont">{{item.chinese}}</text>
     </view>
   </view>
+  <!-- 用户选择错误，后出现的提示操作层 -->
+  <view class="coverBody" wx:if="{{tipCover}}">
+    <text class="wrongTip">选择错了，继续加油！</text>
+    <image class="tipImg" src="../source/image/selectWrong.png"></image>
+    <!-- 按钮功能区 -->
+    <view class="btnContinue" bindtap="continueLearn">
+      <text class="tipFont">继续学习</text>
+    </view>
+    <view class="btnAddWord" bindtap="addNewWord">
+      <text class="tipFont">添加至生词本</text>
+    </view>
+  </view>
 </view>
+
+

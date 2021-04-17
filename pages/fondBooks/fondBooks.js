@@ -16,7 +16,36 @@ Page({
       url: '../bookStore/bookStore',
     })
   },
-
+  
+  //选择要背诵的词书
+  recitedBookBtn:function(e){
+    var that = this;         
+    var tempArray = that.data.localFondArray;               
+    var index = e.currentTarget.dataset.index;        //得到此时点击的图书索引
+    var bookId = this.data.localFondArray[index].id;
+    var bookName = this.data.localFondArray[index].name;
+    var count = this.data.localFondArray[index].count;
+    wx.showModal({
+      title:'温馨提示',
+      content:'确定选择此词书吗？',
+      success(res){
+        if(res.confirm){
+          app.globalData.orderNum = 1;
+          //将所有词书设置为选择
+          for(let i = 0;i < tempArray.length;i++){
+            tempArray[i].showRecite = false
+          }
+          tempArray[index].showRecite = true
+        }
+        app.globalData.recitedBook.bookId = bookId;
+        app.globalData.recitedBook.bookName = bookName;
+        app.globalData.recitedBook.bookCount = count;
+        that.setData({
+          localFondArray:tempArray
+        })       
+      }
+    })
+  },
   //删除词书
   deleteBookBtn:function(e){
     var that = this;                         //解决showModal中不能使用this.data删除数据
@@ -92,7 +121,7 @@ Page({
       return;
     }
     
-    //每次页面显示时，把本地已收藏词书数组提交服务器，请求得到词书其他数据
+    //每次页面显示时，把本地已收藏词书数组id提交服务器，请求得到词书其他数据
     wx.request({
       url: app.globalData.netUrl + 'fondBook.php',
       header: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -106,6 +135,19 @@ Page({
         if(res.data.length > 0){
           for(let i = 0;i < res.data.length;i++){
             res.data[i].image = "../source/image/booksImg/" + res.data[i].image;
+            res.data[i].showRecite = false
+          }
+
+          //根据本地全局变量中的recitedBook中存储的数据，设置哪一本书正在背诵
+          if(app.globalData.recitedBook != null){
+            for(let i = 0;i < res.data.length;i++){
+              if(res.data[i].id == app.globalData.recitedBook.bookId){
+                res.data[i].showRecite = true
+              }else{
+                res.data[i].showRecite = false
+              }
+              
+            }
           }
         }        
         that.setData({               

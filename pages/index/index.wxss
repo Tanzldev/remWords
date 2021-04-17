@@ -19,7 +19,8 @@ page{
   height: 60rpx;
 }
 .bookName{
-  font-size: 38rpx;
+  font-size: 50rpx;
+  color:#15c6f2ef;
 }
 .changeBook{
   display: flex;
@@ -27,7 +28,7 @@ page{
   justify-content: center;
   height: fit-content;
   width: 80rpx;
-  font-size: 35rpx;
+  font-size: 20rpx;
   margin-left: 20rpx;
   border-style: solid;
   border-color: aquamarine;

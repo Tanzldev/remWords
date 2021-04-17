@@ -3,10 +3,13 @@
 const app = getApp()
 Page({
   data: {
-    progress_txt: '989/1024', 
+    progressTxt: '0/0', 
     count:0, // 设置 计数器 初始为0
     countTimer: null, 
     hasUserInfo: false,
+    bookName:"你还未选择词书",            //正在背诵词书的书名
+    bookCount:0,            //词书总的单词数
+    roundPercent:0          //环型进度条百分比
   },
 
   changeBook:function(){
@@ -66,16 +69,23 @@ Page({
     }, 100)
   },
   //复习单词
-  review:function(){
-    wx.navigateTo({
-      url: '../newWords/newWords',
-    })
+  review:function(){  
+      wx.navigateTo({
+        url: '../newWords/newWords',
+      })       
   },
   //学习单词
   learn:function(){
-    wx.navigateTo({
-      url: '../learn/learn',
-    })
+    let that = this;
+    if(that.data.bookCount == 0){
+      wx.navigateTo({
+        url: '../fondBooks/fondBooks',
+      })
+    }else{
+      wx.navigateTo({
+        url: '../learn/learn',
+      })
+    }    
   },
   toLogin:function(){
     wx.switchTab({
@@ -106,16 +116,34 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let that = this;
     console.log("页面显示中")
+    //如果用户已经选择了想要背诵的词书
+    if(app.globalData.recitedBook.bookName != ""){
+      that.setData({
+        bookName:app.globalData.recitedBook.bookName,
+        bookCount:app.globalData.recitedBook.bookCount,  
+      })
+
+      //显示背词百分比
+      let percent = (app.globalData.recitedCount/that.data.bookCount)*2;
+      
+      let process = app.globalData.recitedCount + "/" + that.data.bookCount;
+      that.setData({
+        progressTxt:process,
+        roundPercent:percent
+      })
+      this.drawCircle(that.data.roundPercent);        //根据参数进行画圆
+    }
+    
     //若页面不存在用户信息，即用户没有登录，则显示遮罩层
-    if(app.globalData.userInfo!=null){
+    if(app.globalData.userInfo != null){
       this.setData({
-        hasUserInfo:true
+        hasUserInfo:true 
       })
     }else{
-      this.drawProgressbg(); 
-      this.drawCircle(1.5);        //根据参数进行画圆
-      //this.countInterval()
+      this.drawProgressbg();     
+      //this.countInterval()                    //计时效果画进度条
       this.setData({
         hasUserInfo:false
       })
