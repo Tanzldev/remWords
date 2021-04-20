@@ -14,19 +14,20 @@
 
   <view class="scrollviewBody">
 
-    <scroll-view class="scroll-view"  scroll-y="true">
-      <view class="scrollviewItems" wx:for="{{scrollviewArray}}">
+    <scroll-view class="scroll-view"  scroll-y="true" >
+      <view class="scrollviewItems" wx:for="{{scrollviewArray}}" wx:key="key">
         <!-- {{index}}: {{item.message}} -->
         <view class="wordBox">
-            <text class="word">section</text>
+            <text class="word">{{item.english}}</text>
         </view>
         <view class="translationBox"> 
-            <text class="translation">n.片段；部分；部门；地区</text>
+            <text class="translation">{{item.chinese}}</text>
+            <!-- 单词释义盖子 -->
+            <view class="cover" wx:if="{{!translate}}">
+                <text class="translateTip">-显示释义-</text>
+            </view>
         </view>
-        <!-- 单词释义盖子 -->
-        <view class="cover" wx:if="{{!translate}}">
-          <text class="translateTip">-显示释义-</text>
-        </view>
+        
       </view>
     </scroll-view>
 

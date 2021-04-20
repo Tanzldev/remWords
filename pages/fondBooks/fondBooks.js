@@ -27,10 +27,12 @@ Page({
     var count = this.data.localFondArray[index].count;
     wx.showModal({
       title:'温馨提示',
-      content:'确定选择此词书吗？',
+      content:'是否选择《'+ bookName +'》此词书，进行学习？',
       success(res){
         if(res.confirm){
-          app.globalData.orderNum = 1;
+          //用户更换当前正在背诵的词书，将已背诵的词数归0。选择数组编排索引归0
+          app.globalData.orderNum = 1;    
+          app.globalData.recitedCount = 0
           //将所有词书设置为选择
           for(let i = 0;i < tempArray.length;i++){
             tempArray[i].showRecite = false

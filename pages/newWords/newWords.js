@@ -1,4 +1,5 @@
 // pages/newWords/newWords.js
+const app = getApp();
 Page({
 
   /**
@@ -8,23 +9,7 @@ Page({
     showMeanTip:'显示释义',
     translate:false ,         //开始进入生词本，不显示释义
 
-    scrollviewArray:[{
-      message:0
-    },{
-      message:1
-    },{
-      message:2
-    },{
-      message:3
-    },{
-      message:4
-    },{
-      message:5
-    },{
-      message:6
-    },{
-      message:7
-    }],
+    scrollviewArray:[],
     
   },
 
@@ -59,7 +44,25 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    let that = this;
+    wx.request({
+      url: app.globalData.netUrl + 'serReview.php',
+      header: { "Content-Type": "application/x-www-form-urlencoded" },
+      method:"POST",
+      data:{
+        type:1,                   //得到用户的生词表
+        userName:app.globalData.userInfo.nickName
+      },
+      success:function(res){
+        console.log(res.data)
+        that.setData({
+          scrollviewArray:res.data
+        })
+      },
+      fail:function(res){
 
+      }
+    })
   },
 
   /**

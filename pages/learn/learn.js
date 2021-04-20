@@ -40,7 +40,7 @@ Page({
 
       //判断是加载本地数据，加载下一个数据。还是发起网络请求
       this.isRequest();
-                        
+      app.globalData.recitedCount++;           //已背单词数+1             
     }
     else{
       /**
@@ -50,6 +50,7 @@ Page({
       that.setData({
         tipCover:true
       })
+      app.globalData.recitedCount++;          //已背单词数+1 
     }
        
   },
@@ -203,7 +204,8 @@ Page({
       data:{
         type:1,
         orderNum:app.globalData.orderNum,
-        bookName:app.globalData.recitedBook.bookName
+        bookName:app.globalData.recitedBook.bookName,
+        roundCount:app.globalData.roundCount
       },
       success:function(res){
         that.setData({

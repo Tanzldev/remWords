@@ -19,11 +19,14 @@
       <text class="wordsCount">共{{item.count}}词</text>
      </view>
      
-     
-      <view class="recitedBook" wx:if="{{item.showRecite}}">正在背诵</view>
+     <view class="rightBody">
+      <view class="recitedBook" wx:if="{{item.showRecite}}">学习中</view>
       <!-- 删除词书 -->
       <image class="deleteBook" src="../source/image/deleteBook.jpg" bindtap="deleteBookBtn" data-index="{{index}}"></image>
+      
+     </view>
+      
      
-     
+      
   </view>
 </view>

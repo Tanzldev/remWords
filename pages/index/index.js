@@ -9,13 +9,20 @@ Page({
     hasUserInfo: false,
     bookName:"你还未选择词书",            //正在背诵词书的书名
     bookCount:0,            //词书总的单词数
-    roundPercent:0          //环型进度条百分比
+    roundPercent:0,          //环型进度条百分比
+    array: [10,20,30,40,50]
   },
 
+//设置picker选择器事件
+bindPickerChange:function name(e) {
+  let that = this;
+  app.globalData.roundCount = that.data.array[e.detail.value]-1;
+  console.log(app.globalData.roundCount)
+},
+
   changeBook:function(){
-    wx.showToast({
-      title: '你点击了跟换词书',
-      icon:'none'
+    wx.navigateTo({
+      url: '../fondBooks/fondBooks',
     })
   },
 

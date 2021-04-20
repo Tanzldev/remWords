@@ -4,10 +4,11 @@ App({
     userInfo:null,
     netUrl: 'http://127.0.0.1/remWords/server/',   
     fondBookArr:[],           //用户点击登录后，存储用户已经收藏的词书id
-    orderNum:1,              //记录此刻用户所背单词的编号,数据库的id是从1开始的，为0时将报错
-    selectArrayOrder:0,     //记录用户未完成一轮学习，退出学习页面，记录此刻单词数组中的顺序
+    orderNum:1,            //记录此刻用户所背单词的编号,数据库的id是从1开始的，为0时将报错
+    selectArrayOrder:0,   //记录用户未完成一轮学习，退出学习页面，记录此刻单词数组中的顺序
     recitedBook:{bookName:""},   //用户选择正在背诵的词书,需要存储id、bookName和count
     recitedCount:0,         //已经背诵的单词数
+    roundCount:9
   },
 
   //根据用户名获取用户收藏词书id数组

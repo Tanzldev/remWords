@@ -77,25 +77,37 @@ page {                         /*这里的page是手机页面的高度，为适�
 }
 
 .wordBox{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 90rpx;
   margin-left: 6%;
+
 }
 
 .word{
   font-size: 44rpx;
 }
+
 .translationBox{
+  display: flex;
+  flex-direction: column;
+  
+  height: 90rpx;
   margin-left: 6%;
-  margin-top: 20rpx;
+}
+.translation{
   color:#969696d3;
+  font-size: 35rpx;
 }
 
 /* 单词释义上的盖子 */
 .cover{
   position: absolute;
-  height: 60rpx;
+  height: 70rpx;
   width: 90%;
-  margin-top: 60rpx;      /*上边距*/
-  margin-left: 5%;
+  /* margin-top: 40rpx;             */
+  /* margin-left: 6%; */
   background: #b4e8f5;
   border-radius: 10rpx;
   text-align: center;

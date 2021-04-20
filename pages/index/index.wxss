@@ -16,34 +16,55 @@ page{
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  height: 60rpx;
+  height: 140rpx;
+  width: 100%;
 }
 .bookName{
-  font-size: 50rpx;
+  font-size: 60rpx;
   color:#15c6f2ef;
 }
+.rightBody{
+  position: absolute;
+  width: 100rpx;
+  height: 150rpx;
+  right: 2%;
+  /* margin-left: 85%;
+  margin-top: 10%; */
+}
 .changeBook{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: fit-content;
-  width: 80rpx;
-  font-size: 20rpx;
-  margin-left: 20rpx;
-  border-style: solid;
-  border-color: aquamarine;
-  border-radius: 15rpx;
+  width: 120rpx;
+  height: 45rpx;
+  font-size: 30rpx;
+  color: #ffffff;
+  background: #15c6f2ef;
+  border-top-left-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+  text-align: center;
+}
+.set{
+  width: 120rpx;
+  height: 45rpx;
+  font-size: 30rpx;
+  color: #ffffff;
+  background: #15c6f2ef;
+  border-top-left-radius: 20rpx;
+  border-bottom-left-radius: 20rpx;
+  margin-top: 30rpx;
+  text-align: center;
 }
 .contain{
   margin-top: 20%;
+
 }
 .progress_box{
   position: relative;
+  margin:0 auto;        /*元素竖直居中*/
   width:220px;
   height: 220px;  
   display: flex;  
   align-items: center;
   justify-content: center;
+
 }
 .progress_bg{
   position: absolute;

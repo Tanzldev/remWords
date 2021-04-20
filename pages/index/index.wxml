@@ -1,31 +1,35 @@
 <!--index.wxml-->
 <view class="body">
-  
+  <view wx:if="{{hasUserInfo}}">
   <view class="headTip">
-    <view class="bookName">{{bookName}}</view>
-    <view class="changeBook" bindtap="changeBook">换书</view>
+    <view class="bookName">{{bookName}}</view> 
+    <view class="rightBody">
+      <view class="changeBook" bindtap="changeBook">·  换书</view>
+      <view class="set">
+        <picker bindchange="bindPickerChange" value="{{index}}"range="{{array}}" header-text="选择一轮学习单词数">·  设置</picker></view>
+    </view>
   </view>
 
   <!-- 环型进度条 -->
   <view class="contain">
     <view class='progress_box'>
        <!-- 内环 -->                                                                  
-        <canvas class="progress_bg"   canvas-id="canvasProgressbg">  </canvas> 
+        <canvas class="progress_bg" canvas-id="canvasProgressbg">  </canvas> 
         <!-- 外环 -->
-        <canvas class="progress_canvas"   canvas-id="canvasProgress">  </canvas> 
+        <canvas class="progress_canvas"  canvas-id="canvasProgress">  </canvas> 
         <view class="progress_text">            
             <text class='progress_info'>{{progressTxt}}</text>
         </view>     
     </view>
     <view class="processTip">完成进度</view>
 
-  <view class="bottomFunc">
-    <view class="review" bindtap="review">复  习</view>
-    <view class="learn" bindtap="learn">学  习</view>
-  </view>
+    <view class="bottomFunc">
+      <view class="review" bindtap="review">复  习</view>
+      <view class="learn" bindtap="learn">学  习</view>
+    </view>
 
   </view>
-
+  </view>
   <!-- 页面遮罩层 -->
   <view class="cover" wx:if="{{!hasUserInfo}}">
     <view class="userTip" bindtap="toLogin">请先登录</view>

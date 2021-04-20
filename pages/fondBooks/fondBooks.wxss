@@ -87,16 +87,29 @@ page {
   letter-spacing: 3rpx;
   font-size:25rpx;
  }
-.recitedBook{
-  position: absolute;
-  margin-left: 75%;
-  margin-bottom: 25%;
-  font-size: 30rpx;
-  background: #0ee0fc;
-  border-radius: 10rpx;
-}
+ .rightBody{
+   flex: 1;           /*占下所有的宽度*/
+   height: 100%;
+ }
  .deleteBook{
+   margin-top: 50%;
    width: 80rpx;
    height: 80rpx;
 
  }
+ .recitedBook{
+  /*position:absolute;z-index:auto;
+  绝对浮动布局后，元素会脱离父级元素。独立显示。边框距以屏幕显示为准*/
+  position: absolute;
+  height: fit-content;
+  width: 100rpx;
+  margin-left: 80rpx;
+  right: 5%;                /*父级元素scrollview右边距，为5%。这里设置5%参考为屏幕*/
+  font-size: 30rpx;
+  color: #ffffff;
+  background: #ff3456;
+  text-align: center;
+  border-bottom-left-radius: 15rpx;
+  border-top-right-radius: 15rpx;
+  z-index: 1;
+}
