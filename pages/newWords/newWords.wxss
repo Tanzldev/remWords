@@ -17,7 +17,7 @@ page {                         /*这里的page是手机页面的高度，为适�
   align-items: center;
   height: 70rpx;
   width: 100%;
-  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0,0,0,0.2);
+ 
 }
 
 .tipImg{
@@ -50,6 +50,10 @@ page {                         /*这里的page是手机页面的高度，为适�
 
 }
 
+.msgBody{
+
+  box-shadow: 0rpx 0rpx 10rpx 0rpx rgba(0,0,0,0.2); 
+}
 .scrollviewBody{                  
   /*全为scrollview自适应手机高度*/
   overflow: auto;             

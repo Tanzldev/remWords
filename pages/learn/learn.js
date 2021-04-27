@@ -38,7 +38,7 @@ Page({
       })
       this.sleep(500);        //开启线程休眠0.5秒
 
-      //判断是加载本地数据，加载下一个数据。还是发起网络请求
+      //判断是加载本地数据，还是发起网络请求，加载下一个数据
       this.isRequest();
       app.globalData.recitedCount++;           //已背单词数+1             
     }
@@ -62,7 +62,7 @@ Page({
       tipCover:false,         //隐藏错误信息提示层
       orderIndex:temp
     })
-    //判断是加载本地数据，加载下一个数据。还是发起网络请求
+    //判断是加载本地数据，还是发起网络请求，加载下一个数据。
     this.isRequest();
     
   },
@@ -101,22 +101,21 @@ Page({
         console.log(res.data)
       }
     })
-    //判断是加载本地数据，加载下一个数据。还是发起网络请求
+    //判断是加载本地数据，还是发起网络请求，加载下一个数据。
     this.isRequest();
   
   },
   //判断是加载本地数据，加载下一个数据。还是发起网络请求
   isRequest:function(){
     let that = this;
+    //判断是否到达结果数组的最后
     if(that.data.orderIndex != that.data.resultArray.length){
       this.getSelectArray() 
     }else{
-      //判断是否到达结果数组的最后
       that.setData({
         orderIndex:0            //从结果数组的下标0开始，归0操作
       })
-      app.globalData.orderNum = app.globalData.orderNum + that.data.resultArray.length;
-      console.log("发起请求"+app.globalData.orderNum)
+      
       wx.showModal({
         cancelColor: 'cancelColor',
         title:'恭喜完成本阶段学习',
@@ -124,6 +123,8 @@ Page({
         success(res){
           //用户点击确定事件
           if(res.confirm){   
+            app.globalData.orderNum = app.globalData.orderNum + that.data.resultArray.length;
+            console.log("发起请求"+app.globalData.orderNum)
             that.getResultArray();
           }
           //用户点击取消事件

@@ -10,6 +10,11 @@
     <text class="showMean" bindtap="showMean">{{showMeanTip}}</text>  
   </view>
 
+  <view class="msgBody">
+    <view style="margin-left: 6%;">你共有生词数：<text style="color:green">{{all}}</text></view>
+    <view style="margin-bottom:3rpx;margin-left: 6%">目前处于遗忘曲线上有：<text style="color:red">{{forgeting}}</text></view>
+  </view>
+
   <!-- 滑块内容scrollView -->
 
   <view class="scrollviewBody">

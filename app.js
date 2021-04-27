@@ -8,7 +8,7 @@ App({
     selectArrayOrder:0,   //记录用户未完成一轮学习，退出学习页面，记录此刻单词数组中的顺序
     recitedBook:{bookName:""},   //用户选择正在背诵的词书,需要存储id、bookName和count
     recitedCount:0,         //已经背诵的单词数
-    roundCount:9
+    roundCount:9            //每轮所背诵的单词数
   },
 
   //根据用户名获取用户收藏词书id数组

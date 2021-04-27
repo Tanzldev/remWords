@@ -8,7 +8,8 @@ Page({
   data: {
     showMeanTip:'显示释义',
     translate:false ,         //开始进入生词本，不显示释义
-
+    all:0,
+    forgeting:0,
     scrollviewArray:[],
     
   },
@@ -56,8 +57,19 @@ Page({
       success:function(res){
         console.log(res.data)
         that.setData({
-          scrollviewArray:res.data
+          scrollviewArray:res.data.words
         })
+        if(res.data.words.length == 0){
+          wx.showToast({
+            title: '目前没有需要复习的单词',
+            icon:'none'
+          })
+        }else{
+          that.setData({
+            all:res.data.all,
+            forgeting:res.data.forgeting
+          })
+        }
       },
       fail:function(res){
 
