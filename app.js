@@ -2,7 +2,7 @@
 App({
   globalData: {
     userInfo:null,
-    netUrl: 'http://127.0.0.1/remWords/server/',   
+    netUrl: 'http://139.196.147.9/remWords/server/',   
     fondBookArr:[],           //用户点击登录后，存储用户已经收藏的词书id
     orderNum:1,            //记录此刻用户所背单词的编号,数据库的id是从1开始的，为0时将报错
     selectArrayOrder:0,   //记录用户未完成一轮学习，退出学习页面，记录此刻单词数组中的顺序
@@ -10,7 +10,7 @@ App({
     recitedCount:0,         //已经背诵的单词数
     roundCount:9            //每轮所背诵的单词数
   },
-
+  
   //根据用户名获取用户收藏词书id数组
   getUserFondBook:function(userName){
     //console.log("进入函数")
@@ -25,8 +25,8 @@ App({
         name:userName
       },
       success:function(res){
-        that.globalData.fondBookArr = res.data,
-        console.log(that.globalData.fondBookArr)
+        that.globalData.fondBookArr = res.data
+        //console.log(that.globalData.fondBookArr)
         //console.log(typeof(that.globalData.fondBookArr[0]))
       },
       fail:function(res){

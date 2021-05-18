@@ -35,7 +35,7 @@ Page({
       success:function(res){
         //对服务端返回的数据组装
         for(let i = 0;i < res.data.length;i++){
-          res.data[i].image = "../source/image/booksImg/" + res.data[i].image;
+          res.data[i].image = app.globalData.netUrl+"images/" + res.data[i].image;
           res.data[i].fondImgSrc = "../source/image/fondImg.jpg";
           res.data[i].hasFond = false;
           res.data[i].tipSelect = "选择词书";
@@ -257,7 +257,7 @@ Page({
          * 部分词书共同界面参数，没有存到数据库中
          */
         for(let i = 0;i < res.data.length;i++){
-          res.data[i].image = "../source/image/booksImg/" + res.data[i].image;
+          res.data[i].image = app.globalData.netUrl+"images/" + res.data[i].image;
           res.data[i].fondImgSrc = "../source/image/fondImg.jpg";
           res.data[i].hasFond = false;
           res.data[i].tipSelect = "选择词书";

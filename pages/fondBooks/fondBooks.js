@@ -136,7 +136,7 @@ Page({
         console.log(res.data)
         if(res.data.length > 0){
           for(let i = 0;i < res.data.length;i++){
-            res.data[i].image = "../source/image/booksImg/" + res.data[i].image;
+            res.data[i].image = app.globalData.netUrl+"images/" + res.data[i].image;
             res.data[i].showRecite = false
           }
 
