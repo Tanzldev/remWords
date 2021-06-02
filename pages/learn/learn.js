@@ -31,7 +31,7 @@ Page({
       let temp = that.data.orderIndex + 1;              //使用临时变量使背词数+1
       let tempChineseArr = that.data.chineseArray;  //为了设置选择数组的正确选项的颜色
       tempChineseArr[index].borderColor = "#20c000";
-      tempChineseArr[index].bgd = "#c4f5b9";
+      tempChineseArr[index].borderWidth = "10rpx";
       that.setData({
         orderIndex:temp,
         chineseArray:tempChineseArr
@@ -158,10 +158,10 @@ Page({
     })
     //let rightIndex = Math.floor(Math.random() * 4);   //正确选择的索引，存储正确的意思
     let tArray = [
-    {borderColor:"#b5b1b0",chinese:""},
-    {borderColor:"#b5b1b0",chinese:""},
-    {borderColor:"#b5b1b0",chinese:""},
-    {borderColor:"#b5b1b0",chinese:""}];
+    {borderColor:"#000000",borderWidth:"5rpx",chinese:""},
+    {borderColor:"#000000",borderWidth:"5rpx",chinese:""},
+    {borderColor:"#000000",borderWidth:"5rpx",chinese:""},
+    {borderColor:"#000000",borderWidth:"5rpx",chinese:""}];
     //当前正在背诵单词索引
     //let orderIndex = 0;
     that.setData({

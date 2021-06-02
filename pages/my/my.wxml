@@ -4,8 +4,8 @@
 
   <!-- 用户信息 -->
   <view class="userInfo">
-    <!-- 顶层背景，有用户信息时，用了一张网络图当背景 -->
-    <image class="bgdImg" src="//static.runoob.com/images/demo/demo3.jpg" wx:if="{{hasUserInfo}}"></image>
+    <!-- 顶层背景，有用户信息时，以用户头像填充背景 -->
+    <view class="bgdImg" style="background-image:url({{userInfo.avatarUrl}})" wx:if="{{hasUserInfo}}"></view>
 
     <view class="comUserInfo">
       <block wx:if="{{hasUserInfo}}">
@@ -63,7 +63,9 @@
       <view class="item">
         <text class="tipText">当前版本</text>
         <text style="margin-left:300rpx">{{versionNum}}</text>
+
       </view>
       
+  
   </view>
 </view>

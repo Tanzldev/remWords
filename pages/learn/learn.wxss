@@ -43,8 +43,7 @@
   height: 110rpx;
   width: 90%;
   border-style:solid;
-  border-color:#b5b1b0;
-
+  /* border-color:#20c000; */
   border-radius: 80rpx;
   margin-top: 5%;
   

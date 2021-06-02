@@ -59,11 +59,7 @@ Page({
         that.setData({
           scrollviewArray:res.data.words
         })
-        if(res.data.forgeting == 0){
-          that.setData({
-            all:res.data.all,
-            forgeting:res.data.forgeting
-          })
+        if(res.data.words.length == 0){
           wx.showToast({
             title: '目前没有需要复习的单词',
             icon:'none'

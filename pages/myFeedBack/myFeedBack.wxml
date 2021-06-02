@@ -1,7 +1,7 @@
 <!--pages/myFeedBack/myFeedBack.wxml-->
 <view class="table">
  
-    <text class="item">如有问题</text>
+    <text class="item">板块还在开发中，如有问题</text>
     <text class="item">请联系谭智联QQ：1593724363</text>
     <text class="item" style="color:red">带来不便，深感歉意!</text>
 

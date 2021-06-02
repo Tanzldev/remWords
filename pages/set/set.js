@@ -42,7 +42,6 @@ Page({
             //用户点击了确定
             if (res.confirm) {
               app.globalData.userInfo = null
-              app.globalData.fondBookArr = []       //退出登录时，清除用户收藏列表
               prevPage.setData({
                 login: "登录",
                 hasUserInfo: false,   //将hasUserInfo否定

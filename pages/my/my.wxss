@@ -20,7 +20,7 @@
   height: 160rpx;
   /*-webkit-filter: blur(2px);    图片高斯模糊*/
   filter: blur(2px);
-  filter: opacity(20%);
+  filter: opacity(15%);
   position: absolute;
   z-index: -1;
   /* 边框圆角 */
