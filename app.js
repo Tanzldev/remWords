@@ -10,7 +10,7 @@ App({
     recitedCount:0,         //已经背诵的单词数
     roundCount:9            //每轮所背诵的单词数
   },
-
+  
   //根据用户名获取用户收藏词书id数组
   getUserFondBook:function(userName){
     //console.log("进入函数")
@@ -25,8 +25,8 @@ App({
         name:userName
       },
       success:function(res){
-        that.globalData.fondBookArr = res.data,
-        console.log(that.globalData.fondBookArr)
+        that.globalData.fondBookArr = res.data
+        //console.log(that.globalData.fondBookArr)
         //console.log(typeof(that.globalData.fondBookArr[0]))
       },
       fail:function(res){

@@ -8,7 +8,7 @@
   <!-- 选择部分 -->
   <view class="translateBody">
     <!-- data-index数组索引绑定 -->
-    <view class="item" wx:for="{{chineseArray}}" bindtap='select' wx:key="unique" data-index="{{index}}" style="border-color:{{item.borderColor}};border-width: {{item.borderWidth}}">
+    <view class="item" wx:for="{{chineseArray}}" bindtap='select' wx:key="unique" data-index="{{index}}" style="border-color:{{item.borderColor}};border-width: {{item.borderWidth}};background:{{item.bgd}}">
       <text class="itemfont">{{item.chinese}}</text>
     </view>
   </view>
